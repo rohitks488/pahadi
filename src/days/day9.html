@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Feb 9 - Chocolate Day 🍫</title>
+  <link rel="stylesheet" href="/style.css">
+  <link rel="stylesheet" href="./day9.css">
+</head>
+<body>
+<div class="bg-hearts">
+  <span>🍫</span><span>🍩</span><span>🍪</span><span>🍫</span>
+  <span>🍬</span><span>🧁</span><span>🍫</span><span>✨</span>
+</div>
+
+<div class="game-container">
+  <div class="card jar-card">
+    <div class="stats">
+      <h1>Sweetness Collector 🍫</h1>
+      <p id="instruction">Catch 13 treats to fill the jar for your sweetheart!</p>
+      <h2 id="choco-count">Collected: 0 / 13</h2>
+    </div>
+
+    <div id="spawn-area"></div>
+
+    <div class="jar-wrapper">
+      <div id="jar">
+        <div id="chocolates-inside"></div>
+      </div>
+      <div class="jar-lid"></div>
+      <!-- Secondary, upper label -->
+      <div class="jar-label-top">Property of My Love ❤️</div>
+      <!-- Primary, lower label -->
+      <div class="jar-label">
+        <span style="display: block; font-size: 0.6rem; text-transform: uppercase; letter-spacing: 2px; font-style: normal; margin-bottom: 2px; opacity: 0.7;">Handcrafted for</span>
+        My Sweetest Love
+      </div>
+    </div>
+
+    <button class="btn-valentine" style="background: #8d6e63;" onclick="location.href='/'">Back to Calendar</button>
+  </div>
+</div>
+
+<div id="victory-modal" class="hidden">
+  <div class="card victory-card">
+    <h1>Jar Full! 🎊</h1>
+    <p>This jar is full of sweets, but none of them are as sweet as you. Happy Chocolate Day! 🍫</p>
+    <div class="final-choco">💝</div>
+    <button class="btn-valentine" onclick="location.href='./day9-part2.html'">You're the Best!</button>
+  </div>
+</div>
+
+<script type="module" src="./day9.js"></script>
+</body>
+</html>

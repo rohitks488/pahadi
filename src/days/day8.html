@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Feb 8 - Propose Day | My Universe</title>
+  <link rel="stylesheet" href="/style.css">
+  <link rel="stylesheet" href="./day8.css">
+</head>
+<body class="space-theme">
+<div class="stars-container" id="stars-bg"></div>
+
+<div class="main-container">
+  <div class="card space-card">
+    <div id="game-stage">
+      <h1>You are my Universe ✨</h1>
+      <p>Connect the stars to reveal a secret...</p>
+      <div id="constellation-area">
+        <!-- Stars will be generated here -->
+        <svg id="constellation-lines"></svg>
+      </div>
+      <p id="hint-text">Click the glowing stars in order, start from center!</p>
+      <p id="star-message" style="font-style: italic; color: #ff4081; min-height: 1.2em; margin-top: 10px;"></p>
+    </div>
+
+    <div id="proposal-stage" class="hidden">
+      <h1 class="glow-text">Will you be mine? 💍</h1>
+      <p>In every universe, in every lifetime, I'd choose you.</p>
+      <div class="btn-group">
+        <button class="btn-valentine" id="yesBtn">Yes, Forever ❤️</button>
+        <button class="btn-valentine" id="noBtn" style="background: transparent; border: 1px solid #555;">No</button>
+      </div>
+    </div>
+
+    <div id="message-stage" class="hidden">
+      <h1 class="glow-text">A Message for Me? 💌</h1>
+      <p>Write something sweet, and it'll fly straight to my heart.</p>
+      <textarea id="love-letter" placeholder="Type your heart out..."></textarea>
+      <button class="btn-valentine" id="sendBtn">Send to Rohit ✨</button>
+    </div>
+
+    <div id="celebration-stage" class="hidden">
+      <h1 class="glow-text">My Whole World! 🥰</h1>
+      <p>Every star in the sky is shining for us today.</p>
+      <div class="floating-ring">💍</div>
+      <button class="btn-valentine" onclick="location.href='/'">Back to Calendar</button>
+    </div>
+
+    <!-- Astronaut & Planet Animation -->
+    <div class="cosmic-scene">
+      <div class="planet">🪐</div>
+      <div class="astronaut-container" id="astro-container">
+        <span class="astronaut" id="astro-1">👨‍🚀</span>
+        <span class="astronaut hidden" id="astro-2">👩‍🚀</span>
+      </div>
+    </div>
+    <p class="orbit-caption">That's my head revolving around you all day, cutu &lt;3</p>
+  </div>
+</div>
+
+<script type="module" src="./day8.js"></script>
+</body>
+</html>

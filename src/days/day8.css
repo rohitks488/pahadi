@@ -1,0 +1,209 @@
+.space-theme {
+    background: radial-gradient(circle at bottom, #1b2735 0%, #090a0f 100%);
+    overflow: hidden;
+    color: white;
+    margin: 0;
+    height: 100vh;
+}
+
+.stars-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+}
+
+.star {
+    position: absolute;
+    background: white;
+    border-radius: 50%;
+    opacity: 0.5;
+    animation: twinkle var(--duration) infinite ease-in-out;
+}
+
+@keyframes twinkle {
+    0%, 100% { opacity: 0.3; transform: scale(1); }
+    50% { opacity: 1; transform: scale(1.2); }
+}
+
+.space-card {
+    background: rgba(255, 255, 255, 0.05) !important;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    z-index: 1;
+    max-width: 500px;
+}
+
+#constellation-area {
+    position: relative;
+    width: 300px;
+    height: 300px;
+    margin: 20px auto;
+    border: 1px dashed rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+}
+
+.game-star {
+    position: absolute;
+    width: 12px;
+    height: 12px;
+    background: #fff;
+    border-radius: 50%;
+    cursor: pointer;
+    box-shadow: 0 0 10px #fff;
+    z-index: 10;
+    transition: transform 0.3s;
+}
+
+.game-star.active {
+    background: #ff4081;
+    box-shadow: 0 0 20px #ff4081;
+    transform: scale(1.5);
+}
+
+#constellation-lines {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+}
+
+line {
+    stroke: rgba(255, 64, 129, 0.5);
+    stroke-width: 2;
+    stroke-dasharray: 100;
+    stroke-dashoffset: 100;
+    animation: drawLine 0.5s forwards;
+}
+
+@keyframes drawLine {
+    to { stroke-dashoffset: 0; }
+}
+
+
+.particle {
+    position: fixed;
+    pointer-events: none;
+    background: #ff4081;
+    border-radius: 50%;
+    z-index: 100;
+}
+
+.firework-particle {
+    position: fixed;
+    pointer-events: none;
+    border-radius: 50%;
+    z-index: 0; /* Keep it behind the card */
+    filter: blur(1px);
+}
+
+#love-letter {
+    width: 100%;
+    height: 120px;
+    border-radius: 15px;
+    padding: 15px;
+    margin: 15px 0;
+    background: rgba(255, 182, 193, 0.2); /* Very light pink with transparency */
+    color: white;
+    border: 2px solid rgba(255, 64, 129, 0.3);
+    font-family: inherit;
+    font-size: 1rem;
+    outline: none;
+    resize: none;
+    transition: all 0.3s ease;
+    box-sizing: border-box;
+}
+
+#love-letter:focus {
+    background: rgba(255, 182, 193, 0.3);
+    border-color: #ff4081;
+    box-shadow: 0 0 15px rgba(255, 64, 129, 0.4);
+}
+
+#love-letter::placeholder {
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.glow-text {
+    text-shadow: 0 0 10px #ff4081, 0 0 20px #ff4081;
+}
+
+.cosmic-scene {
+    margin-top: auto;
+    padding-top: 60px;
+    position: relative;
+    width: 100%;
+    height: 120px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.planet {
+    font-size: 4rem;
+    z-index: 1;
+    filter: drop-shadow(0 0 15px rgba(255, 182, 193, 0.3));
+    animation: rotatePlanet 20s linear infinite;
+}
+
+.astronaut-container {
+    position: absolute;
+    width: 120px;
+    height: 120px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    animation: orbit 8s infinite linear;
+    z-index: 2;
+}
+
+.astronaut {
+    font-size: 2rem;
+    filter: drop-shadow(0 0 5px white);
+}
+
+/* Hand-holding look when both are visible */
+.astronaut-container.couple {
+    width: 150px; /* Slightly wider for two */
+    animation-duration: 12s; /* Slower, more romantic orbit */
+}
+
+.astronaut-container.couple .astronaut {
+    margin: 0 -5px; /* Bring them close together */
+}
+
+@keyframes orbit {
+    from { transform: rotate(0deg) translateX(70px) rotate(0deg); }
+    to { transform: rotate(360deg) translateX(70px) rotate(-360deg); }
+}
+
+@keyframes rotatePlanet {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+.orbit-caption {
+    font-size: 0.85rem;
+    font-style: italic;
+    color: rgba(255, 255, 255, 0.6);
+    margin-top: 10px;
+    letter-spacing: 0.5px;
+    text-align: center;
+}
+
+.hidden { display: none !important; }
+
+.floating-ring {
+    font-size: 5rem;
+    animation: float 3s infinite ease-in-out;
+    margin: 20px 0;
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0) rotate(0deg); }
+    50% { transform: translateY(-20px) rotate(10deg); }
+}

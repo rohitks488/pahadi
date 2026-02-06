@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Feb 10 - Teddy Day 🧸</title>
+  <link rel="stylesheet" href="/style.css">
+  <link rel="stylesheet" href="./day10.css">
+</head>
+<body class="teddy-theme">
+<div class="bg-hearts"><span>🧸</span><span>☁️</span><span>💖</span><span>☁️</span></div>
+
+<div class="main-container">
+  <div class="card teddy-card">
+
+    <!-- STAGE 1: Adopt a Teddy (Triangle Layout) -->
+    <div id="stage-1" class="stage">
+      <h1>Adopt a Teddy 🏠</h1>
+      <p>Pick a friend that matches your vibe!</p>
+      <div class="teddy-selection">
+        <div class="teddy-choice" data-type="cute">
+          <img src="/teddy1.png" alt="Cute Teddy">
+          <span>The Softie (Cute)</span>
+        </div>
+        <!-- Ensure these data-types match your image content -->
+        <div class="teddy-choice" data-type="goth">
+          <img src="/teddy2.png" alt="Goth Teddy">
+          <span>The Lover (Romantic)</span>
+        </div>
+        <div class="teddy-choice" data-type="romantic">
+          <img src="/teddy3.png" alt="Romantic Teddy">
+          <span>The Rebel (Goth)</span>
+        </div>
+      </div>
+      <div id="naming-area" class="hidden">
+        <input type="text" id="teddy-name" placeholder="Give your teddy a name...">
+        <button class="btn-valentine" id="confirm-adoption">Adopt ❤️</button>
+      </div>
+    </div>
+
+    <!-- STAGE 2: The Hug Meter -->
+    <div id="stage-2" class="stage hidden">
+      <h1 id="hug-title">Hug your new friend! 🤗</h1>
+      <div class="hug-zone">
+        <div id="big-teddy">
+          <!-- Selected image will be injected here by JS -->
+        </div>
+        <div id="hug-progress-container">
+          <div id="hug-progress"></div>
+        </div>
+      </div>
+      <p style="margin-top: 15px;">Click and hold the teddy to give a tight hug!</p>
+
+      <!-- New Message Container -->
+      <div id="hug-message-container">
+        <p id="hug-message">"Hugging this teddy is like hugging a piece of my heart!"</p>
+      </div>
+    </div>
+
+    <!-- STAGE 3: The Secret Backpack -->
+    <div id="stage-3" class="stage hidden">
+      <h1>What's in the backpack? 🎒</h1>
+      <p id="backpack-owner">Teddy has a secret for you...</p>
+      <div class="backpack-wrapper" id="backpack-trigger">
+        <div class="backpack-icon">🎒</div>
+        <div class="backpack-items">
+          <div class="secret-item" data-msg="You are the 'honey' to my life! 🍯. And trust me you do taste like honey. I know very well🤤. Like a teddy, you make my world soft and cozy. Love you forever! ❤️🧸">🍯</div>
+          <div class="secret-item" data-msg="Love you to the saturn and back cutuuuuuuuu✨❤️✨. From my skin hair to __ every thing stands up once I see youuu🤪. Tereko pata h kabhi kabhi mereko gussa bhi aata h to fir tera face dekh k sb pyar m badal jata🫠. You are the one who completes me, you are the one who make me want to live, you are everything that I ask from god everytime, kyuki tu h mere saath to baki to mai dekh lunga">💌</div>
+          <div class="secret-item" data-img="/nomNom.jpeg">📸</div>
+        </div>
+      </div>
+      <div id="backpack-msg-area"></div>
+      <button class="btn-valentine" onclick="location.href='/'" style="margin-top: 20px;">Back to Calendar</button>
+    </div>
+
+  </div>
+</div>
+
+<script type="module" src="./day10.js"></script>
+</body>
+</html>

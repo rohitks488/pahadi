@@ -1,0 +1,130 @@
+:root {
+    --primary-pink: #ffafcc;
+    --deep-red: #ff0040;
+    --soft-white: #fff5f5;
+}
+
+body {
+    margin: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(-45deg, #fff5f5, #ffafcc, #ffdee9, #ffffff);
+    background-size: 400% 400%;
+    animation: gradientBG 15s ease infinite;
+    color: #333;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+/* Base Card Style (Used by Home Page) */
+.card {
+    background: rgba(255, 255, 255, 0.9);
+    backdrop-filter: blur(10px);
+    padding: 2.5rem;
+    border-radius: 30px;
+    box-shadow: 0 15px 35px rgba(255, 175, 204, 0.4);
+    text-align: center;
+    width: 90%;
+    max-width: 450px;
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+/* SIDE-BY-SIDE LAYOUT (Used ONLY for Day 7) */
+.main-container {
+    display: flex;
+    flex-direction: row;
+    gap: 30px;
+    align-items: center;
+    justify-content: center;
+    width: 95%;
+    max-width: 1100px;
+    z-index: 1;
+}
+
+/* Specific logic for Day 7 cards to ensure they are the same size */
+.main-container .card {
+    flex: 1;
+    height: 700px; /* Fixed height for symmetry */
+    min-width: 350px;
+    justify-content: space-between; /* Spreads content nicely */
+}
+
+/* Fix for the big button issue */
+.main-container .btn-valentine {
+    width: auto;
+    min-width: 160px;
+    align-self: center; /* Prevents button from stretching to full card width */
+}
+
+.bg-hearts {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    pointer-events: none;
+    z-index: -1;
+    overflow: hidden;
+}
+
+.bg-hearts span {
+    position: absolute;
+    font-size: 2.5rem;
+    opacity: 0.15;
+    animation: floatAround 8s infinite ease-in-out;
+}
+
+.bg-hearts span:nth-child(1) { top: 5%; left: 8%; }
+.bg-hearts span:nth-child(2) { top: 15%; left: 85%; animation-delay: 1s; }
+.bg-hearts span:nth-child(3) { top: 75%; left: 5%; animation-delay: 2s; }
+.bg-hearts span:nth-child(4) { top: 85%; left: 90%; animation-delay: 3s; }
+.bg-hearts span:nth-child(5) { top: 40%; left: 2%; animation-delay: 4s; }
+.bg-hearts span:nth-child(6) { top: 55%; left: 92%; animation-delay: 1.5s; }
+.bg-hearts span:nth-child(7) { top: 2%; left: 40%; animation-delay: 2.5s; }
+.bg-hearts span:nth-child(8) { top: 92%; left: 45%; animation-delay: 5s; }
+.bg-hearts span:nth-child(9) { top: 30%; left: 20%; animation-delay: 0.5s; }
+.bg-hearts span:nth-child(10) { top: 65%; left: 75%; animation-delay: 3.5s; }
+.bg-hearts span:nth-child(11) { top: 10%; left: 65%; animation-delay: 2.2s; }
+.bg-hearts span:nth-child(12) { top: 80%; left: 30%; animation-delay: 4.8s; }
+
+@keyframes floatAround {
+    0%, 100% { transform: translateY(0) rotate(0deg) scale(1); }
+    50% { transform: translateY(-30px) rotate(15deg) scale(1.1); }
+}
+
+@keyframes gradientBG {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+.btn-valentine {
+    background-color: var(--primary-pink);
+    border: none;
+    padding: 12px 24px;
+    border-radius: 50px;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin: 5px;
+}
+
+.btn-valentine:hover {
+    transform: translateY(-3px) scale(1.05);
+    background-color: var(--deep-red);
+}
+
+@media (max-width: 850px) {
+    .main-container { flex-direction: column; }
+    .main-container .card { height: auto; min-height: 650px; width: 100%; }
+}

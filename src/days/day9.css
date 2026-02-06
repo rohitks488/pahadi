@@ -1,0 +1,218 @@
+body {
+    background: linear-gradient(-45deg, #3e2723, #5d4037, #8d6e63, #d7ccc8);
+    background-size: 400% 400%;
+    animation: gradientBG 15s ease infinite;
+    overflow: hidden;
+}
+
+.jar-card {
+    max-width: 550px;
+    background: rgba(45, 25, 20, 0.4) !important; /* Darker, warmer brown overlay */
+    border: 1px solid rgba(255, 215, 180, 0.2);
+    box-shadow: 0 25px 50px rgba(0,0,0,0.5);
+    color: white;
+    /* Ensure all children of the card are centered */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.stats h1 {
+    font-family: 'Georgia', serif;
+    color: #ffe0b2;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+}
+
+#spawn-area {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.falling-choco {
+    position: absolute;
+    font-size: 2.5rem;
+    cursor: pointer;
+    pointer-events: auto;
+    user-select: none;
+    z-index: 10;
+    filter: drop-shadow(0 5px 5px rgba(0,0,0,0.3));
+    /* Add these lines to increase tap area */
+    padding: 20px;
+    margin: -20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+}
+
+.jar-wrapper {
+    position: relative;
+    width: 220px; /* Slightly wider */
+    height: 280px;
+    margin: 40px auto;
+    /* Force centering within the wrapper */
+    display: flex;
+    justify-content: center;
+}
+
+#jar {
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.3) 0%, rgba(255, 255, 255, 0.1) 100%);
+    backdrop-filter: blur(8px);
+    /* Apothecary jar shape: more squared shoulders, rounded base */
+    border: 2px solid rgba(255, 255, 255, 0.6);
+    border-radius: 40px 40px 80px 80px;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-wrap: wrap-reverse;
+    justify-content: center;
+    align-content: flex-start;
+    padding: 20px;
+    /* Realistic glass shadows and highlights */
+    box-shadow:
+            inset 0 0 25px rgba(255, 255, 255, 0.3),
+            inset 10px 0 15px rgba(255, 255, 255, 0.2),
+            0 20px 40px rgba(0, 0, 0, 0.3);
+}
+
+/* Glass Shine Reflection */
+#jar::before {
+    content: '';
+    position: absolute;
+    top: 10%;
+    left: 10%;
+    width: 25%;
+    height: 60%;
+    background: linear-gradient(to bottom, rgba(255,255,255,0.4) 0%, transparent 100%);
+    border-radius: 50px;
+    pointer-events: none;
+}
+
+.jar-lid {
+    position: absolute;
+    top: -25px; /* Moved up for the stopper look */
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60%;
+    height: 35px;
+    background: rgba(255, 255, 255, 0.3);
+    backdrop-filter: blur(5px);
+    border: 2px solid rgba(255, 255, 255, 0.5);
+    border-radius: 15px 15px 5px 5px;
+    z-index: 5;
+}
+
+/* The round knob/stopper on top */
+.jar-lid::after {
+    content: '';
+    position: absolute;
+    top: -20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 35px;
+    height: 35px;
+    background: radial-gradient(circle at 30% 30%, rgba(255,255,255,0.8) 0%, rgba(255,255,255,0.2) 100%);
+    border: 2px solid rgba(255, 255, 255, 0.6);
+    border-radius: 50%;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+.jar-label {
+    position: absolute;
+    bottom: 80px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #fffdf5; /* Off-white vintage paper color */
+    padding: 8px 20px;
+    border-radius: 4px;
+
+    /* Typography */
+    font-family: 'Georgia', 'Palatino', serif;
+    font-size: 0.9rem;
+    font-style: italic;
+    color: #4e342e;
+    letter-spacing: 1px;
+    text-align: center;
+    white-space: nowrap;
+
+    /* Aesthetics */
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    border: 1px solid #d7ccc8;
+    z-index: 6;
+
+    /* The "Double Border" effect */
+    outline: 1px solid #8d6e63;
+    outline-offset: -4px;
+}
+
+/* New Styling for the top label */
+.jar-label-top {
+    position: absolute;
+    bottom: 155px; /* Positioned above the main label */
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(78, 52, 46, 0.9); /* Dark cocoa color */
+    color: #ffe0b2;
+    padding: 4px 15px;
+    border-radius: 20px;
+    font-family: 'Georgia', serif;
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    white-space: nowrap;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+    border: 1px solid rgba(255, 224, 178, 0.3);
+    z-index: 7;
+}
+
+/* Shared texture for both labels */
+.jar-label::after, .jar-label-top::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(255,255,255,0.2) 0%, transparent 100%);
+    pointer-events: none;
+    border-radius: inherit;
+}
+
+.choco-in-jar {
+    font-size: 1.8rem;
+    margin: -5px;
+    animation: dropIn 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+@keyframes dropIn {
+    from { transform: translateY(-100px) scale(0.5); opacity: 0; }
+    to { transform: translateY(0) scale(1); opacity: 1; }
+}
+
+#victory-modal {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.85);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 100;
+    backdrop-filter: blur(10px);
+}
+
+.final-choco {
+    font-size: 5rem;
+    margin: 20px 0;
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+}
+
+.hidden { display: none !important; }

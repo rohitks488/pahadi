@@ -1,0 +1,140 @@
+#garden {
+    position: relative;
+    width: 320px;
+    height: 250px;
+    margin: 10px auto;
+    border-radius: 15px;
+    background-image: url('/grass1.png');
+    background-size: cover;
+    border: 6px solid #5d4037;
+    box-shadow: inset 0 0 30px rgba(0,0,0,0.3);
+    overflow: hidden;
+}
+
+#garden::before { content: '☀️'; position: absolute; top: 10px; right: 20px; font-size: 1.5rem; filter: drop-shadow(0 0 10px yellow); z-index: 1; }
+
+/* Fixed Cloud Animation */
+#garden::after {
+    content: '☁️'; /* Single cloud base */
+    position: absolute;
+    top: 20px; /* Moved slightly higher in the sky */
+    left: 0;
+    font-size: 1.2rem;
+    opacity: 0.7;
+    white-space: nowrap;
+    /* This adds a second cloud that is 80px to the right and 20px LOWER */
+    text-shadow: 80px 20px 0 rgba(255, 255, 255, 0.7);
+    animation: drift 18s linear infinite;
+    z-index: 1;
+}
+
+@keyframes drift {
+    from { transform: translateX(-150px); }
+    to { transform: translateX(350px); }
+}
+
+.rose-pop {
+    position: absolute;
+    font-size: 2.5rem;
+    animation: grow 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    transform: translate(-50%, -50%);
+}
+
+@keyframes grow {
+    0% { transform: translate(-50%, -50%) scale(0); opacity: 0; }
+    100% { transform: translate(-50%, -50%) scale(1); opacity: 1; }
+}
+
+/* HEARTBEAT BLOOM Animation */
+.sweet-msg {
+    color: #ff0040;
+    font-weight: bold;
+    margin: 15px 0;
+    font-size: 1.1rem;
+    animation: heartbeatBloom 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+}
+
+@keyframes heartbeatBloom {
+    0% { transform: scale(0.5); opacity: 0; }
+    50% { transform: scale(1.15); opacity: 1; }
+    100% { transform: scale(1); opacity: 1; }
+}
+
+/* Envelope Magic */
+.envelope-wrapper {
+    position: relative;
+    width: 280px;
+    height: 180px;
+    background: #f06292;
+    cursor: pointer;
+    perspective: 1000px;
+    margin: 120px auto 20px;
+}
+
+.envelope {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    background: #f06292;
+    border-radius: 0 0 5px 5px;
+    z-index: 1;
+}
+
+.envelope::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 0 0 180px 280px;
+    border-color: transparent transparent #f48fb1 transparent;
+    z-index: 3;
+}
+
+.envelope::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 90px 140px 0 140px;
+    border-color: #f06292 transparent transparent transparent;
+    z-index: 4;
+    transform-origin: top;
+    transition: all 0.5s;
+}
+
+.letter {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    width: 260px;
+    height: 160px;
+    background: white;
+    padding: 15px;
+    font-size: 0.85rem;
+    z-index: 2;
+    transition: all 0.5s;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    overflow-y: auto;
+    text-align: left;
+    line-height: 1.4;
+}
+
+.heart-seal {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 5;
+    font-size: 2.2rem;
+    transition: 0.5s;
+}
+
+.envelope-wrapper.open .envelope::before { transform: rotateX(180deg); z-index: 0; }
+.envelope-wrapper.open .letter { transform: translateY(-150px); height: 280px; z-index: 6; }
+.envelope-wrapper.open .heart-seal { opacity: 0; transform: translate(-50%, -150%) scale(0); }

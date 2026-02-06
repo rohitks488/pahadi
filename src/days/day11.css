@@ -1,0 +1,133 @@
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Caveat:wght@400;700&display=swap');
+
+.promise-theme {
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+}
+
+.promise-card {
+    background: rgba(255, 255, 255, 0.1) !important;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: white;
+    max-width: 500px;
+    padding: 30px;
+    position: relative;
+    /* No overflow: hidden here so background elements are visible if needed */
+}
+
+.font-romantic {
+    font-family: 'Dancing Script', cursive;
+    color: #ff758c;
+    font-size: 2.5rem;
+}
+
+/* Stage 1: Contract */
+.contract-paper {
+    background: #fdf5e6;
+    color: #333;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: inset 0 0 50px rgba(0,0,0,0.1), 5px 5px 15px rgba(0,0,0,0.3);
+    font-family: 'Caveat', cursive;
+    font-size: 1.4rem;
+    text-align: left;
+    transform: rotate(-1deg);
+}
+
+.promise-list { list-style: "✨ "; padding-left: 20px; }
+
+/* Stage 2: Starry Sky */
+#star-sky {
+    position: relative;
+    height: 300px;
+    background: rgba(0,0,0,0.3);
+    border-radius: 20px;
+    margin: 20px 0;
+    overflow: hidden;
+}
+
+.star {
+    position: absolute;
+    cursor: pointer;
+    font-size: 1.5rem;
+    transition: transform 0.3s;
+    filter: drop-shadow(0 0 5px gold);
+    animation: twinkle 2s infinite ease-in-out;
+}
+
+@keyframes twinkle {
+    0%, 100% { opacity: 0.8; transform: scale(1); }
+    50% { opacity: 0.4; transform: scale(0.8); }
+}
+
+#star-message {
+    font-family: 'Dancing Script', cursive;
+    font-size: 1.5rem;
+    min-height: 80px;
+    margin-top: 35px; /* Pushes text lower as requested */
+    color: #ffafcc;
+    padding: 0 10px;
+}
+
+/* Falling Stars Outside the Card */
+.bg-falling-star {
+    position: fixed;
+    top: -20px;
+    color: gold;
+    font-size: 1.2rem;
+    pointer-events: none;
+    z-index: -1; /* Behind the card */
+    animation: fallAcross 4s linear infinite;
+    filter: drop-shadow(0 0 5px gold);
+}
+
+@keyframes fallAcross {
+    0% { transform: translate(0, 0) rotate(45deg); opacity: 0; }
+    10% { opacity: 1; }
+    90% { opacity: 1; }
+    100% { transform: translate(-400px, 800px) rotate(45deg); opacity: 0; }
+}
+
+.shooting-star {
+    position: absolute;
+    top: -10px;
+    color: gold;
+    font-size: 1rem;
+    pointer-events: none;
+    z-index: 0;
+    animation: shootingStar 3s linear infinite;
+}
+
+@keyframes shootingStar {
+    0% { transform: translate(0, 0) rotate(45deg); opacity: 1; }
+    70% { opacity: 1; }
+    100% { transform: translate(-200px, 400px) rotate(45deg); opacity: 0; }
+}
+
+/* Stage 3: Vault */
+.vault-input input {
+    background: transparent;
+    border: 2px solid #ff758c;
+    color: white;
+    font-size: 2rem;
+    width: 120px;
+    text-align: center;
+    letter-spacing: 10px;
+    margin-bottom: 20px;
+    outline: none;
+}
+
+.vault-img {
+    width: 100%;
+    max-width: 250px;
+    border-radius: 15px;
+    margin-top: 20px;
+    border: 3px solid #ff758c;
+}
+
+.hidden { display: none !important; }

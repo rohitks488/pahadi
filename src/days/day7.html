@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Feb 7 - Rose Day</title>
+  <link rel="stylesheet" href="/style.css">
+  <link rel="stylesheet" href="./day7.css">
+</head>
+<body>
+<div class="bg-hearts">
+  <span>💖</span><span>💗</span><span>💘</span><span>💝</span>
+  <span>💕</span><span>❤️</span><span>💓</span><span>✨</span>
+  <span>💌</span><span>💖</span><span>🌸</span><span>✨</span>
+</div>
+
+<div class="main-container">
+  <!-- Left: Garden -->
+  <div class="card">
+    <h1>Happy Rose Day! 🌹</h1>
+    <p>A single rose is a gift, but a garden is a promise.</p>
+    <div id="garden"></div>
+    <div>
+      <button class="btn-valentine" id="plantBtn">Plant a Rose for You</button>
+      <p id="counter-text" style="font-size: 0.9rem; color: #888; margin: 5px 0;">Roses planted: 0</p>
+    </div>
+    <button class="btn-valentine" style="background: #ccc;" onclick="location.href='/'">Back</button>
+  </div>
+
+  <!-- Right: Envelope -->
+  <div class="card">
+    <h1>A Special Note 💌</h1>
+    <div class="envelope-wrapper" id="envelope">
+      <div class="envelope">
+        <div class="letter">
+          <p>To my favorite person,</p>
+          <p>Every rose planted here is a reminder of how much you mean to me. I hope your day is as beautiful as you are!</p>
+          <p>Love always ❤️</p>
+        </div>
+      </div>
+      <div class="heart-seal">💖</div>
+    </div>
+    <p style="font-style: italic; color: #888;">Click the envelope to open</p>
+    <div style="height: 50px;"></div> <!-- Spacer -->
+  </div>
+</div>
+
+<script type="module" src="./day7.js"></script>
+</body>
+</html>

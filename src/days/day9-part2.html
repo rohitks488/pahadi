@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Design Your Chocolate 🍫</title>
+  <link rel="stylesheet" href="/style.css">
+  <link rel="stylesheet" href="./day9.css">
+  <style>
+      .workbench {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          gap: 15px;
+          width: 100%;
+      }
+
+      #chocolate-bar {
+          width: 280px;
+          height: 160px;
+          background: #3e2723;
+          border-radius: 12px;
+          position: relative;
+          display: grid;
+          grid-template-columns: repeat(4, 1fr);
+          grid-template-rows: repeat(2, 1fr);
+          gap: 6px;
+          padding: 10px;
+          border: 4px solid rgba(0,0,0,0.1);
+          box-shadow: 0 15px 35px rgba(0,0,0,0.5);
+          z-index: 5;
+          transition: all 1s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      }
+
+      .choco-chunk {
+          background: rgba(0,0,0,0.2);
+          border-radius: 6px;
+          border-top: 2px solid rgba(255,255,255,0.1);
+          border-left: 2px solid rgba(255,255,255,0.1);
+          box-shadow: inset 3px 3px 5px rgba(0,0,0,0.3);
+          transition: all 0.5s ease;
+      }
+
+      .choice-group {
+          background: rgba(0,0,0,0.2);
+          padding: 15px;
+          border-radius: 15px;
+          width: 100%;
+          box-sizing: border-box;
+      }
+
+      .choice-group p {
+          margin-bottom: 8px;
+          font-weight: bold;
+          color: #ffe0b2;
+          text-transform: uppercase;
+          font-size: 0.8rem;
+      }
+
+      .base-btn[data-color="#3e2723"] { background-color: #3e2723; border: 1px solid #5d4037; }
+      .base-btn[data-color="#795548"] { background-color: #795548; border: 1px solid #8d6e63; }
+      .base-btn[data-color="#f5f5f5"] { background-color: #f5f5f5; color: #333; border: 1px solid #d7ccc8; }
+
+      .topping-item {
+          position: absolute;
+          font-size: 1.8rem;
+          pointer-events: none;
+          z-index: 10;
+          filter: drop-shadow(0 2px 2px rgba(0,0,0,0.3));
+          animation: popIn 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      }
+
+      @keyframes popIn {
+          from { transform: scale(0) rotate(0deg); opacity: 0; }
+          to { transform: scale(1) rotate(var(--rot)); opacity: 1; }
+      }
+
+      /* REVEAL STATE STYLES */
+      .bar-vertical {
+          width: 180px !important;
+          height: 300px !important;
+          grid-template-columns: repeat(2, 1fr) !important;
+          grid-template-rows: repeat(4, 1fr) !important;
+          padding: 15px !important;
+      }
+
+      .final-reveal-container {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          gap: 30px;
+          margin: 30px 0;
+          width: 100%;
+      }
+
+      .love-note {
+          flex: 1;
+          font-family: 'Georgia', serif;
+          font-size: 1.2rem;
+          line-height: 1.6;
+          font-style: italic;
+          color: #ffe0b2;
+          text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+          max-width: 300px;
+          text-align: left;
+          opacity: 0;
+          transform: translateX(20px);
+          transition: all 1s 1s ease-out;
+      }
+
+      .reveal-active .love-note {
+          opacity: 1;
+          transform: translateX(0);
+      }
+
+      .reveal-active .choco-chunk {
+          background-image: url('/Bestchocolate.jpeg');
+          background-size: cover;
+          background-position: center;
+          border: 1px solid rgba(255,255,255,0.2);
+          box-shadow: inset 0 0 10px rgba(0,0,0,0.5);
+      }
+
+      /* New class for the final "Perfect Chocolate" swap */
+      .perfect-chocolate .choco-chunk {
+          background-image: url('/anotherChocolate.jpeg') !important;
+          filter: brightness(1.1) contrast(1.1);
+      }
+
+      #photo-frame { display: none; }
+
+      .btn-group {
+          display: flex;
+          gap: 10px;
+          justify-content: flex-start;
+          margin-top: 15px;
+      }
+
+      #dynamic-text {
+          font-family: 'Georgia', serif;
+          font-weight: bold;
+          color: #ffe0b2;
+          min-height: 3em; /* Keep layout stable */
+      }
+      @media (max-width: 600px) {
+          .final-reveal-container { flex-direction: column; text-align: center; }
+          .love-note { text-align: center; max-width: 100%; }
+      }
+
+      .hidden { display: none !important; }
+  </style>
+</head>
+<body>
+<div class="bg-hearts"><span>🍫</span><span>✨</span><span>🧁</span></div>
+
+<div class="card" style="max-width: 600px; background: rgba(62, 39, 35, 0.85); color: white;">
+  <div id="maker-stage">
+    <h1>Custom Chocolate Factory 🏭</h1>
+    <p>Design a chocolate bar as special as you are!</p>
+
+    <div class="workbench">
+      <!-- Re-added and stabilized the chocolate bar container -->
+      <div id="chocolate-bar" style="margin: 20px 0;">
+        <div class="choco-chunk"></div><div class="choco-chunk"></div>
+        <div class="choco-chunk"></div><div class="choco-chunk"></div>
+        <div class="choco-chunk"></div><div class="choco-chunk"></div>
+        <div class="choco-chunk"></div><div class="choco-chunk"></div>
+
+        <div id="photo-frame">
+          <img src="/Bestchocolate.jpeg" alt="Our Special Memory" id="gift-photo">
+        </div>
+      </div>
+
+      <div class="choice-group">
+        <p>1. Choose Your Base:</p>
+        <div class="controls">
+          <button class="btn-valentine base-btn" data-color="#3e2723">Dark</button>
+          <button class="btn-valentine base-btn" data-color="#795548">Milk</button>
+          <button class="btn-valentine base-btn" data-color="#f5f5f5" style="color:#333">White</button>
+        </div>
+      </div>
+
+      <div class="choice-group">
+        <p>2. Add Toppings (Click to sprinkle):</p>
+        <div class="controls">
+          <button class="btn-valentine topping-btn" data-emoji="🥜">🥜 Nuts</button>
+          <button class="btn-valentine topping-btn" data-emoji="✨">✨ Sparkles</button>
+          <button class="btn-valentine topping-btn" data-emoji="🍓">🍓 Berry</button>
+          <button class="btn-valentine topping-btn" data-emoji="🧂">🧂 Sea Salt</button>
+        </div>
+      </div>
+
+      <button class="btn-valentine" id="wrap-btn" style="background: var(--deep-red); margin-top: 20px;">Wrap it up! 🎁</button>
+    </div>
+  </div>
+
+  <div id="reveal-stage" class="hidden">
+    <h1 style="color: gold;">A Gift for You! 🎁</h1>
+    <p>One perfectly handcrafted chocolate bar, made with all my love.</p>
+
+    <div class="final-reveal-container">
+      <div id="final-bar-container"></div>
+      <div class="love-note" id="love-note-content">
+        <div id="initial-message">
+          <p>"The only chocolate that I would like to have everyday, everynight, every hour, every minute.. forever cutuuuu❤️😋"</p>
+          <button class="btn-valentine" id="swap-photo-btn" style="font-size: 0.8rem; padding: 8px 15px; background: gold; color: #3e2723;">
+            Wanna see perfect chocolate for you? 👀
+          </button>
+        </div>
+
+        <!-- This part will be hidden initially and shown after the photo swap -->
+        <div id="interactive-question" class="hidden" style="margin-top: 20px;">
+          <p id="dynamic-text">Is this the perfect chocolate for you? 👀</p>
+          <div class="btn-group">
+            <button class="btn-valentine" id="yesBtn" style="background: #4caf50;">Yes, obviously! ❤️</button>
+            <button class="btn-valentine" id="noBtn" style="background: #f44336;">Naiii</button>
+          </div>
+        </div>
+
+        <p id="final-love-msg" class="hidden" style="color: #ffafcc; font-size: 1.4rem; font-weight: bold; margin-top: 20px;">
+          Love you soooo sooooo much my white chocolate! 💋😘❤️
+        </p>
+      </div>
+    </div>
+
+    <button class="btn-valentine" onclick="location.href='/'">Happy Chocolate Day! ❤️</button>
+  </div>
+</div>
+
+<script type="module" src="./day9-part2.js"></script>
+</body>
+</html>
