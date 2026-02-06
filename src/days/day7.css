@@ -4,7 +4,7 @@
     height: 250px;
     margin: 10px auto;
     border-radius: 15px;
-    background-image: url('/grass1.png');
+    background-image: url('../../public/grass1.png');
     background-size: cover;
     border: 6px solid #5d4037;
     box-shadow: inset 0 0 30px rgba(0,0,0,0.3);
