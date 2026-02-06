@@ -1,15 +1,15 @@
 document.addEventListener('DOMContentLoaded', () => {
   const buttons = document.querySelectorAll('.btn-valentine');
 
-  // Get current date (Year, Month [0-indexed], Day)
-  // const today = new Date('2026-02-15');
-
+  // Get current date and set it to the very start of the day (midnight)
   const today = new Date();
-  // For testing, you can uncomment the line below to "pretend" it's a specific date:
-  // const today = new Date('2026-02-09');
+  today.setHours(0, 0, 0, 0);
 
   buttons.forEach((button) => {
+    // Set the target date to the start of its day as well
     const targetDate = new Date(button.getAttribute('data-date'));
+    targetDate.setHours(0, 0, 0, 0);
+
     const dayNum = button.id.split('-')[1];
 
     if (today >= targetDate) {
