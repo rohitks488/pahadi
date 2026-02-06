@@ -15,7 +15,7 @@ document.addEventListener('DOMContentLoaded', () => {
       button.style.opacity = '1';
       button.style.cursor = 'pointer';
       button.onclick = () => {
-        window.location.href = `src/days/day${dayNum}.html`;
+        window.location.href = `./src/days/day${dayNum}.html`;
       };
     } else {
       // Not yet... Lock the button
