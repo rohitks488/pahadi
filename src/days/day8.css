@@ -199,11 +199,87 @@ line {
 
 .floating-ring {
     font-size: 5rem;
-    animation: float 3s infinite ease-in-out;
-    margin: 20px 0;
+    animation: float-ring 3s infinite ease-in-out;
+    margin: 10px 0;
+    filter: drop-shadow(0 0 15px rgba(255, 255, 255, 0.5));
 }
 
-@keyframes float {
+@keyframes float-ring {
     0%, 100% { transform: translateY(0) rotate(0deg); }
     50% { transform: translateY(-20px) rotate(10deg); }
+}
+
+/* Star Map Message */
+.star-map-container {
+    position: relative;
+    width: 100%;
+    height: 120px;
+    margin: 20px 0;
+    cursor: crosshair;
+}
+
+.star-map-svg {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.constellation-path {
+    fill: none;
+    stroke: rgba(255, 255, 255, 0.2);
+    stroke-width: 2;
+    stroke-dasharray: 1000;
+    stroke-dashoffset: 1000;
+    transition: stroke-dashoffset 2s ease, stroke 0.5s;
+}
+
+.star-map-container:hover .constellation-path {
+    stroke-dashoffset: 0;
+    stroke: #ffeb3b;
+    filter: drop-shadow(0 0 5px #ffeb3b);
+}
+
+.star-node {
+    position: absolute;
+    width: 6px;
+    height: 6px;
+    background: white;
+    border-radius: 50%;
+    box-shadow: 0 0 10px white;
+    transform: translate(-50%, -50%);
+}
+
+.star-map-hint {
+    position: absolute;
+    bottom: -10px;
+    width: 100%;
+    font-size: 0.8rem;
+    color: rgba(255,255,255,0.5);
+    font-style: italic;
+}
+
+/* Love Rockets (Outside Card) */
+.love-rocket {
+    position: fixed;
+    font-size: 2.5rem;
+    pointer-events: none;
+    z-index: 0; /* Above stars, below card */
+    filter: drop-shadow(0 0 15px #ff4081);
+    animation: launch-rocket 4s linear forwards;
+    opacity: 0;
+}
+
+/* Updated Rocket Animation for variety */
+@keyframes launch-rocket {
+    0% { transform: translate(0, 0) scale(0.5); opacity: 0; }
+    10% { opacity: 1; }
+    100% { transform: var(--travel) scale(1); opacity: 0; }
+}
+
+/* Ensure card is on top */
+.space-card {
+    position: relative;
+    z-index: 10;
 }

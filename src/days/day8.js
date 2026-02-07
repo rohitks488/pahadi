@@ -134,7 +134,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
-
   function drawLine(p1, p2) {
     const line = document.createElementNS('http://www.w3.org/2000/svg', 'line');
     line.setAttribute('x1', p1.x);
@@ -152,15 +151,82 @@ document.addEventListener('DOMContentLoaded', () => {
   // 3. Button Actions
   const yesBtn = document.getElementById('yesBtn');
   const noBtn = document.getElementById('noBtn');
-  const sendBtn = document.getElementById('sendBtn');
-  const loveLetter = document.getElementById('love-letter');
+  // ... existing code ...
   let noClickCount = 0;
 
   yesBtn.addEventListener('click', () => {
+    // Skipping message-stage directly to celebration-stage for now
     document.getElementById('proposal-stage').classList.add('hidden');
-    document.getElementById('message-stage').classList.remove('hidden');
+    document.getElementById('celebration-stage').classList.remove('hidden');
+
+    // Update the caption for the celebration stage
+    const caption = document.querySelector('.orbit-caption');
+    if (caption) {
+      caption.innerText =
+        'now both of us are revolving around whole worlds doing random stuff and still laughing like idiots all day ❤️';
+    }
+
     createSupernova();
+    startMeteors();
+    startLoveRockets(); // New effect!
   });
+
+  function startLoveRockets() {
+    setInterval(() => {
+      if (
+        document
+          .getElementById('celebration-stage')
+          .classList.contains('hidden')
+      )
+        return;
+
+      const rocket = document.createElement('div');
+      rocket.className = 'love-rocket';
+
+      // Randomly choose between rocket and flying kiss
+      const items = ['🚀', '😘', '✨', '💖'];
+      rocket.innerText = items[Math.floor(Math.random() * items.length)];
+
+      // Randomize start position around the edges
+      const side = Math.floor(Math.random() * 4);
+      let startX, startY, destX, destY;
+
+      if (side === 0) {
+        // Bottom
+        startX = Math.random() * window.innerWidth;
+        startY = window.innerHeight + 50;
+        destX = (Math.random() - 0.5) * 1000;
+        destY = -1000;
+      } else if (side === 1) {
+        // Left
+        startX = -50;
+        startY = Math.random() * window.innerHeight;
+        destX = 1000;
+        destY = (Math.random() - 0.5) * 1000;
+      } else {
+        // Right or Top
+        startX = window.innerWidth + 50;
+        startY = Math.random() * window.innerHeight;
+        destX = -1000;
+        destY = (Math.random() - 0.5) * 1000;
+      }
+
+      rocket.style.left = `${startX}px`;
+      rocket.style.top = `${startY}px`;
+      rocket.style.setProperty('--travel', `translate(${destX}px, ${destY}px)`);
+
+      // Rotate slightly for the kiss/sparkles, or full rotation for rocket
+      if (rocket.innerText === '🚀') {
+        const angle = Math.atan2(destY, destX) * (180 / Math.PI) + 90;
+        rocket.style.transform = `rotate(${angle}deg)`;
+      } else {
+        rocket.style.transform = `rotate(${Math.random() * 360}deg)`;
+      }
+
+      document.body.appendChild(rocket);
+      setTimeout(() => rocket.remove(), 4000);
+    }, 600); // Slightly faster for more "magic"
+  }
 
   sendBtn.addEventListener('click', async () => {
     const message = loveLetter.value;
@@ -231,6 +297,38 @@ document.addEventListener('DOMContentLoaded', () => {
     // Purely visual flair
     starsBg.style.transition = 'background 2s';
     starsBg.style.background =
-      'radial-gradient(circle, #ff4081 0%, #090a0f 100%)';
+      'radial-gradient(circle, #4a148c 0%, #090a0f 100%)';
   }
+
+  // --- New Interactive Features ---
+
+  function startMeteors() {
+    setInterval(() => {
+      const meteor = document.createElement('div');
+      meteor.className = 'meteor';
+      meteor.style.left = `${Math.random() * 100}%`;
+      meteor.style.top = `${Math.random() * 40}%`;
+      starsBg.appendChild(meteor);
+      setTimeout(() => meteor.remove(), 2000);
+    }, 1500);
+  }
+
+  // Make astronauts react to cursor
+  const astroContainer = document.getElementById('astro-container');
+  const astro1 = document.getElementById('astro-1');
+  const astro2 = document.getElementById('astro-2');
+
+  document.addEventListener('mousemove', (e) => {
+    if (
+      !document.getElementById('celebration-stage').classList.contains('hidden')
+    ) {
+      // Make the astronauts "float" towards the mouse slightly
+      const moveX = (e.clientX - window.innerWidth / 2) / 50;
+      const moveY = (e.clientY - window.innerHeight / 2) / 50;
+      astroContainer.style.transform = `translate(${moveX}px, ${moveY}px)`;
+
+      // Show the second astronaut (the pair) in celebration mode
+      astro2.classList.remove('hidden');
+    }
+  });
 });
