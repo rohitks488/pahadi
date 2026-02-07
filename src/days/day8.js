@@ -155,8 +155,43 @@ document.addEventListener('DOMContentLoaded', () => {
   let noClickCount = 0;
 
   yesBtn.addEventListener('click', () => {
-    // Skipping message-stage directly to celebration-stage for now
+    // Bring back the message stage
     document.getElementById('proposal-stage').classList.add('hidden');
+    document.getElementById('message-stage').classList.remove('hidden');
+    createSupernova(); // Background shifts to deep purple
+  });
+
+  sendBtn.addEventListener('click', async () => {
+    const loveLetter = document.getElementById('love-letter'); // Define it here
+    const message = loveLetter.value;
+
+    if (!message.trim()) {
+      alert('Please write a little something! ❤️');
+      return;
+    }
+
+    sendBtn.innerText = 'Sending...';
+    sendBtn.disabled = true;
+
+    try {
+      const response = await fetch('https://formspree.io/f/xdaajynw', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          email: 'visitor@valentines.com',
+          message: message,
+          _subject: 'A message from your Valentine! ❤️',
+        }),
+      });
+
+      completeCelebration();
+    } catch (error) {
+      completeCelebration();
+    }
+  });
+
+  function completeCelebration() {
+    document.getElementById('message-stage').classList.add('hidden');
     document.getElementById('celebration-stage').classList.remove('hidden');
 
     // Update the caption for the celebration stage
@@ -166,10 +201,10 @@ document.addEventListener('DOMContentLoaded', () => {
         'now both of us are revolving around whole worlds doing random stuff and still laughing like idiots all day ❤️';
     }
 
-    createSupernova();
+    // START ALL OUR COOL FEATURES!
     startMeteors();
-    startLoveRockets(); // New effect!
-  });
+    startLoveRockets(); // This includes the 🚀 and 😘
+  }
 
   function startLoveRockets() {
     setInterval(() => {
