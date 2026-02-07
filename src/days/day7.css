@@ -69,6 +69,7 @@
     cursor: pointer;
     perspective: 1000px;
     margin: 120px auto 20px;
+    overflow: visible; /* Changed to visible to let the letter pop out */
 }
 
 .envelope {
@@ -120,9 +121,17 @@
     z-index: 2;
     transition: all 0.5s;
     box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-    overflow-y: auto;
+    overflow-y: hidden; /* Hide scrollbar when inside */
     text-align: left;
     line-height: 1.4;
+    box-sizing: border-box; /* Ensures padding doesn't add to width */
+}
+
+.envelope-wrapper.open .letter {
+    transform: translateY(-150px);
+    height: 280px;
+    z-index: 6;
+    overflow-y: auto; /* Enable scrollbar only when open */
 }
 
 .heart-seal {
@@ -136,5 +145,4 @@
 }
 
 .envelope-wrapper.open .envelope::before { transform: rotateX(180deg); z-index: 0; }
-.envelope-wrapper.open .letter { transform: translateY(-150px); height: 280px; z-index: 6; }
 .envelope-wrapper.open .heart-seal { opacity: 0; transform: translate(-50%, -150%) scale(0); }

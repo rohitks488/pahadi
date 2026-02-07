@@ -2,14 +2,28 @@ let roseCount = 0;
 const plantedPositions = [];
 
 const messages = [
+  'I was going to send you a whole garden, but then I realized no rose is as beautiful as your khi khi khi khi smile! 🌹😜',
+  "Batman's favorite flower is officially you! 🦇❤️",
+  "I'm so lucky to have you in my universe.",
   "You're beautiful!",
-  'My favorite flower is you.',
-  'Every rose reminds me of your smile.',
-  "I'm so lucky to have you.",
-  'You make my heart bloom!',
-  'A rose for my rose.',
+  'You make my heart bloom like no one else can! ✨',
+  'A rose for my rose.🌹',
   'Blooming for you!',
+  'You are the rarest rose in the garden of my life. 🌹',
+  'Roses are red, violets are blue, I might be a Batman, but I’m nothing without you. ❤️',
+  'To the person who makes my life bloom every single day. Happy Rose Day, my love! 🌸',
 ];
+
+// Helper to manage unique message delivery
+let messageQueue = [];
+
+function getNextMessage() {
+  if (messageQueue.length === 0) {
+    // Refill and shuffle the queue when empty
+    messageQueue = [...messages].sort(() => Math.random() - 0.5);
+  }
+  return messageQueue.pop();
+}
 
 document.addEventListener('DOMContentLoaded', () => {
   const garden = document.getElementById('garden');
@@ -46,11 +60,12 @@ document.addEventListener('DOMContentLoaded', () => {
       garden.appendChild(newRose);
       if (counterText) counterText.innerText = `Roses planted: ${roseCount}`;
 
-      if (roseCount % 5 === 0) {
+      // Show message every 3 roses
+      if (roseCount % 3 === 0) {
         const oldMsg = document.querySelector('.sweet-msg');
         if (oldMsg) oldMsg.remove();
 
-        const randomMsg = messages[Math.floor(Math.random() * messages.length)];
+        const randomMsg = getNextMessage();
         const msgPopup = document.createElement('p');
         msgPopup.className = 'sweet-msg';
         msgPopup.innerText = randomMsg;
