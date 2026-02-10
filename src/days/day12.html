@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Feb 12 - Hug Day 🤗</title>
+  <link rel="stylesheet" href="../../style.css">
+  <link rel="stylesheet" href="./day12.css">
+</head>
+<body class="hug-theme">
+<div id="bg-emojis" class="bg-emojis"></div>
+<div class="main-container">
+  <div class="card hug-card">
+
+    <!-- STAGE 1: Random Hug Generator (The Icebreaker) -->
+    <div id="stage-1" class="stage">
+      <h1 class="font-romantic">The Hug-o-Matic 🎰</h1>
+      <p>Spin the wheel to see which hug you're getting later!</p>
+      <div class="generator-box">
+        <div id="hug-display" class="hug-text">???</div>
+        <button class="btn-valentine" id="spin-btn">Spin for a Hug! 💫</button>
+        <p id="hug-description" class="hug-description-text"></p>
+      </div>
+      <button class="btn-valentine hidden" id="to-stage-2" style="margin-top: 20px;">That sounds perfect! Next? →</button>
+    </div>
+
+    <!-- STAGE 2: Anatomy of a Perfect Hug -->
+    <div id="stage-2" class="stage hidden">
+      <h1 class="font-romantic">Why your hugs are the best... 🔎</h1>
+      <div class="anatomy-container">
+        <div class="hug-illustration">
+          <span class="hotspot" data-msg="The perfect place to hide from the world." style="top: 20%; left: 40%;">📍</span>
+          <span class="hotspot" data-msg="Better than any weighted blanket." style="top: 50%; left: 30%;">📍</span>
+          <span class="hotspot" data-msg="Where I can hear your heart beat for me." style="top: 45%; left: 60%;">📍</span>
+          <img src="../../public/teddy1.png" alt="Hug Illustration" class="hug-img">
+        </div>
+        <div id="anatomy-msg" class="anatomy-msg">Click the pins!</div>
+      </div>
+      <button class="btn-valentine hidden" id="to-stage-3">I want a real one now! →</button>
+    </div>
+
+    <!-- STAGE 3: Empty stage removal/rename -->
+    <div id="stage-3" class="stage hidden">
+      <!-- Stage 3 is currently skipped in JS logic -->
+    </div>
+
+    <!-- STAGE 4: The Hug Greenhouse (Growing Love) -->
+    <div id="stage-4" class="stage hidden">
+      <h1 class="font-romantic">Grow our Hug Garden 🌸</h1>
+      <p>Hold the button to make the flowers bloom!</p>
+      <div id="garden-view" class="garden-box">
+        <!-- Flowers appear here -->
+      </div>
+      <button class="btn-valentine" id="grow-btn">Hold to Plant Hugs 🌱</button>
+      <div class="progress-container">
+        <div id="grow-progress" class="progress-bar"></div>
+      </div>
+    </div>
+
+    <!-- STAGE 5: The Ultimate Hug Timer (Long-Distance Style) -->
+    <div id="stage-5" class="stage hidden">
+      <h1 class="font-romantic">The Infinite Hug 🫂</h1>
+      <p>I know you love long hugs... Hold this for as long as you can.</p>
+      <div class="timer-display" id="timer">0.0s</div>
+      <div class="hug-button-wrapper">
+        <button id="hug-timer-btn" class="huge-hug-btn">HUG ME</button>
+      </div>
+      <div id="hug-feedback" class="hug-feedback"></div>
+      <button class="btn-valentine hidden" id="final-back-btn" onclick="location.href='../../index.html'">Save these hugs for later ❤️</button>
+    </div>
+
+  </div>
+</div>
+<script type="module" src="./day12.js"></script>
+</body>
+</html>

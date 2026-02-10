@@ -1,4 +1,15 @@
 document.addEventListener('DOMContentLoaded', () => {
+  const stages = document.querySelectorAll('.stage');
+
+  // Stage Transitions
+  const goToStage = (num) => {
+    stages.forEach((s) => s.classList.add('hidden'));
+    const target = document.getElementById(`stage-${num}`);
+    if (target) {
+      target.classList.remove('hidden');
+    }
+  };
+
   // --- Stage 1: Contract ---
   const signBtn = document.getElementById('sign-contract');
   signBtn.addEventListener('click', () => {
@@ -27,7 +38,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const sky = document.getElementById('star-sky');
     const msgArea = document.getElementById('star-message');
 
-    // Add falling stars to the PAGE background (outside the card)
+    // Add falling stars to the PAGE background
     for (let i = 0; i < 8; i++) {
       const shooter = document.createElement('div');
       shooter.className = 'bg-falling-star';
@@ -37,7 +48,7 @@ document.addEventListener('DOMContentLoaded', () => {
       document.body.appendChild(shooter);
     }
 
-    // --- KEEPING YOUR FAVORITE ANIMATION BELOW ---
+    // Decoration stars
     for (let i = 0; i < 15; i++) {
       const decoration = document.createElement('div');
       decoration.className = 'star';
@@ -66,21 +77,94 @@ document.addEventListener('DOMContentLoaded', () => {
         starsLit++;
 
         if (starsLit === promises.length) {
-          document.getElementById('to-stage-3').classList.remove('hidden');
+          document.getElementById('to-prank-stage').classList.remove('hidden');
         }
       });
       sky.appendChild(star);
     });
   }
 
-  document.getElementById('to-stage-3').addEventListener('click', () => {
+  document.getElementById('to-prank-stage').addEventListener('click', () => {
     document.getElementById('stage-2').classList.add('hidden');
-    document.getElementById('stage-3').classList.remove('hidden');
+    document.getElementById('stage-prank').classList.remove('hidden');
   });
 
-  // --- Stage 3: Encryption ---
+  // --- Stage: Prank Stage Logic ---
+  // ... existing code ...
+  // --- Stage: Prank Stage Logic ---
+  const prankSignBtn = document.getElementById('prank-sign-btn');
+  const prankText = document.getElementById('prank-promise-text');
+  const prankFeedback = document.getElementById('prank-feedback');
+  let prankStep = 1;
+
+  prankSignBtn.addEventListener('click', () => {
+    const sig = document.getElementById('prank-signature').value.trim();
+    if (!sig) {
+      alert('Aise kaise? Sign karo pehle! ❤️');
+      return;
+    }
+
+    if (prankStep === 1) {
+      // Prank 1: Nangu Pangu
+      prankText.innerText =
+        'I will stay nangu pangu by your side always liluuuuuuu 😛';
+      prankSignBtn.disabled = true;
+
+      setTimeout(() => {
+        prankFeedback.innerText =
+          'just kidding just kidding cutu, now check ❤️';
+        prankFeedback.classList.remove('hidden');
+
+        setTimeout(() => {
+          prankText.innerText =
+            'I will stay by your side forever mera liluuuuuu ❤️';
+          // We keep the feedback visible here while she signs again
+          document.getElementById('prank-signature').value = '';
+          prankSignBtn.disabled = false;
+          prankStep = 2;
+        }, 5000);
+      }, 1500);
+    } else if (prankStep === 2) {
+      // Hide previous feedback when she clicks for the second prank
+      prankFeedback.classList.add('hidden');
+
+      // Prank 2: Red Bra
+      prankText.innerText =
+        'I will stay in red bra and phool wale umm hmm by your side always gobarrrrr 😛';
+      prankSignBtn.disabled = true;
+
+      setTimeout(() => {
+        prankFeedback.innerText =
+          'just kiddd just kidding pyarii pahadi meri, ab dekh ❤️';
+        prankFeedback.classList.remove('hidden');
+
+        setTimeout(() => {
+          prankText.innerText =
+            'I will stay by your side forever mera liluuuuuu ❤️';
+          // Keep feedback visible for the transition to the final step
+          document.getElementById('prank-signature').value = '';
+          prankSignBtn.disabled = false;
+          prankStep = 3;
+        }, 5000);
+      }, 1500);
+    } else if (prankStep === 3) {
+      prankFeedback.classList.add('hidden');
+
+      // Final: 1cm Cheepa k
+      prankText.innerText =
+        'I will stay 1cm cheepa k by your side always lilumannnn 😘';
+      prankSignBtn.disabled = true;
+      setTimeout(() => {
+        document.getElementById('stage-prank').classList.add('hidden');
+        document.getElementById('stage-3').classList.remove('hidden');
+      }, 5000);
+    }
+  });
+  // ... existing code ...
+
+  // --- Stage 3: Encryption / Vault ---
   const openBtn = document.getElementById('open-vault');
-  const correctCode = '3021'; // Set your secret code here (e.g., Feb 14)
+  const correctCode = '3021';
 
   openBtn.addEventListener('click', () => {
     const input = document.getElementById('vault-code').value;
@@ -88,9 +172,32 @@ document.addEventListener('DOMContentLoaded', () => {
       document.querySelector('.vault-input').classList.add('hidden');
       document.getElementById('vault-content').classList.remove('hidden');
       document.getElementById('final-text').innerText =
-        'You unlocked my heart! I promise to stay by your side forever, through every high and low. ♾️❤️';
+        'You unlocked my heart! I promise to stay by your side forever, through every high and low and middle/medium ALSOOO... ♾️❤️. And as long as you are with me(i.e. atleast 4-5 lives), I promise to keep you breathless time to time 😜';
     } else {
       alert('Wrong code! Think about a special date... 🤔');
     }
   });
+
+  // --- Background Floating Emojis ---
+  const bgContainer = document.getElementById('bg-emojis');
+  const promiseEmojis = ['🤙', '✨', '💖', '🫂', '🤝', '🔒', '🗝️'];
+
+  function spawnEmoji() {
+    if (!bgContainer) return;
+    const emoji = document.createElement('div');
+    emoji.className = 'floating-emoji';
+    emoji.innerText =
+      promiseEmojis[Math.floor(Math.random() * promiseEmojis.length)];
+    emoji.style.left = Math.random() * 100 + 'vw';
+    const size = Math.random() * (2 - 1) + 1;
+    emoji.style.fontSize = `${size}rem`;
+    const duration = Math.random() * (15 - 8) + 8;
+    emoji.style.animationDuration = `${duration}s`;
+    emoji.style.opacity = Math.random() * (0.5 - 0.2) + 0.2;
+    bgContainer.appendChild(emoji);
+    setTimeout(() => emoji.remove(), duration * 1000);
+  }
+
+  setInterval(spawnEmoji, 2500);
+  for (let i = 0; i < 5; i++) setTimeout(spawnEmoji, i * 500);
 });

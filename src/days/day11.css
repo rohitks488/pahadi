@@ -2,11 +2,19 @@
 
 .promise-theme {
     background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
-    min-height: 100vh;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+}
+
+.main-container {
     display: flex;
     justify-content: center;
     align-items: center;
-    color: white;
+    min-height: 100vh;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 20px;
 }
 
 .promise-card {
@@ -15,9 +23,14 @@
     border: 1px solid rgba(255, 255, 255, 0.2);
     color: white;
     max-width: 500px;
+    width: 100%;
     padding: 30px;
     position: relative;
-    /* No overflow: hidden here so background elements are visible if needed */
+    display: flex;
+    flex-direction: column;
+    height: auto !important;
+    border-radius: 20px;
+    text-align: center;
 }
 
 .font-romantic {
@@ -69,44 +82,9 @@
     font-family: 'Dancing Script', cursive;
     font-size: 1.5rem;
     min-height: 80px;
-    margin-top: 35px; /* Pushes text lower as requested */
+    margin-top: 20px;
     color: #ffafcc;
     padding: 0 10px;
-}
-
-/* Falling Stars Outside the Card */
-.bg-falling-star {
-    position: fixed;
-    top: -20px;
-    color: gold;
-    font-size: 1.2rem;
-    pointer-events: none;
-    z-index: -1; /* Behind the card */
-    animation: fallAcross 4s linear infinite;
-    filter: drop-shadow(0 0 5px gold);
-}
-
-@keyframes fallAcross {
-    0% { transform: translate(0, 0) rotate(45deg); opacity: 0; }
-    10% { opacity: 1; }
-    90% { opacity: 1; }
-    100% { transform: translate(-400px, 800px) rotate(45deg); opacity: 0; }
-}
-
-.shooting-star {
-    position: absolute;
-    top: -10px;
-    color: gold;
-    font-size: 1rem;
-    pointer-events: none;
-    z-index: 0;
-    animation: shootingStar 3s linear infinite;
-}
-
-@keyframes shootingStar {
-    0% { transform: translate(0, 0) rotate(45deg); opacity: 1; }
-    70% { opacity: 1; }
-    100% { transform: translate(-200px, 400px) rotate(45deg); opacity: 0; }
 }
 
 /* Stage 3: Vault */
@@ -115,19 +93,95 @@
     border: 2px solid #ff758c;
     color: white;
     font-size: 2rem;
-    width: 120px;
+    width: 140px;
     text-align: center;
-    letter-spacing: 10px;
+    letter-spacing: 5px;
     margin-bottom: 20px;
     outline: none;
 }
 
 .vault-img {
     width: 100%;
-    max-width: 250px;
+    max-width: 280px;
+    height: 350px;
+    margin: 15px auto;
     border-radius: 15px;
-    margin-top: 20px;
-    border: 3px solid #ff758c;
+    border: 3px solid #ffafcc;
+    object-fit: cover;
+    object-position: top;
+    display: block;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+}
+
+/* Background Floating Animations */
+.bg-emojis {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: -1;
+}
+
+.floating-emoji {
+    position: absolute;
+    bottom: -50px;
+    animation: floatUp linear forwards;
+}
+
+@keyframes floatUp {
+    0% { transform: translateY(0) rotate(0deg); opacity: 0; }
+    10% { opacity: 0.4; }
+    90% { opacity: 0.4; }
+    100% { transform: translateY(-110vh) rotate(360deg); opacity: 0; }
+}
+
+.bg-falling-star {
+    position: fixed;
+    top: -20px;
+    color: gold;
+    font-size: 1.2rem;
+    pointer-events: none;
+    z-index: -1;
+    animation: fallAcross 4s linear infinite;
+    filter: drop-shadow(0 0 5px gold);
+}
+
+@keyframes fallAcross {
+    0% { transform: translate(0, 0) rotate(45deg); opacity: 0; }
+    10% { opacity: 1; }
+    100% { transform: translate(-400px, 800px) rotate(45deg); opacity: 0; }
 }
 
 .hidden { display: none !important; }
+
+.main-promise-text {
+    font-family: 'Dancing Script', cursive;
+    font-size: 1.8rem;
+    color: #ff758c;
+    margin: 20px 0;
+    min-height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-shadow: 0 0 10px rgba(255, 117, 140, 0.3);
+}
+
+.prank-sub-text {
+    font-family: 'Caveat', cursive;
+    font-size: 1.4rem;
+    color: #ffafcc;
+    margin-top: 15px;
+    animation: fadeIn 0.5s ease-out;
+}
+
+.signature-box input {
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid #ff758c;
+    color: white;
+    padding: 10px;
+    border-radius: 10px;
+    margin-bottom: 15px;
+    text-align: center;
+}

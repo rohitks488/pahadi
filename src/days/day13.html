@@ -1,0 +1,102 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Feb 13 - Kiss Day 💋</title>
+  <link rel="stylesheet" href="../../style.css">
+  <link rel="stylesheet" href="./day13.css">
+</head>
+<body class="kiss-theme">
+<div id="bg-emojis" class="bg-emojis"></div>
+<div class="main-container">
+
+  <!-- 3D Flip Card Container -->
+  <div class="flip-card" id="main-flip-card">
+    <div class="flip-card-inner">
+
+      <!-- FRONT SIDE: The Game Stages -->
+      <div class="card kiss-card flip-card-front">
+
+        <!-- STAGE 1: Lipstick Roulette -->
+        <div id="stage-1" class="stage">
+          <h1 class="font-romantic">Lipstick Roulette 💄</h1>
+          <p>Pick a shade to see your kiss style for today!</p>
+          <div class="roulette-container">
+            <div class="lipstick-options">
+              <button class="lipstick-btn red" data-style="Classic Romance 🌹">❤️</button>
+              <button class="lipstick-btn pink" data-style="Butterfly Kisses 🦋">💖</button>
+              <button class="lipstick-btn coral" data-style="The Surprise Peck ⚡">🧡</button>
+              <button class="lipstick-btn purple" data-style="Forehead Blessing ✨">💜</button>
+            </div>
+            <div id="roulette-result" class="result-box hidden">
+              <h2 id="style-title"></h2>
+              <p id="style-desc"></p>
+              <button class="btn-valentine" id="to-stage-2">That's the one! →</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- STAGE 2: The Kiss Geography -->
+        <div id="stage-2" class="stage hidden">
+          <h1 class="font-romantic">The Kiss Geography 🗺️</h1>
+          <p>Every kiss has a different promise...</p>
+          <div class="map-container">
+            <div class="silhouette-box">
+              <span class="kiss-point" data-msg="Forehead: A promise to always protect you." style="top: 15%; left: 50%;">📍</span>
+              <span class="kiss-point" data-msg="Cheek: Because I just love being near you." style="top: 35%; left: 30%;">📍</span>
+              <span class="kiss-point" data-msg="Hand: To show you the respect you deserve." style="top: 70%; left: 60%;">📍</span>
+              <span class="kiss-point" data-msg="Lips: Because you're my one and only." style="top: 40%; left: 50%;">📍</span>
+              <img src="../../public/teddy1.png" alt="Map" class="map-img">
+            </div>
+            <div id="map-msg" class="map-msg">Tap the points!</div>
+          </div>
+          <button class="btn-valentine hidden" id="to-stage-3">Collect some kisses →</button>
+        </div>
+
+        <!-- STAGE 3: Virtual Smooch Collector -->
+        <div id="stage-3" class="stage hidden">
+          <h1 class="font-romantic">Kiss Collector 🧺</h1>
+          <p>Tap the screen to catch the flying kisses!</p>
+          <div id="collection-zone" class="collection-zone">
+            <div class="score-board">Kisses: <span id="kiss-count">0</span>/13</div>
+          </div>
+          <div id="love-you-text" class="love-you-msg hidden">I will kiss each and every inch of you cutu till you become so sensitive/ticklish that you will beg for more kisses and something more uhmmm hmm!❤️</div>
+          <button class="btn-valentine hidden" id="to-stage-4">You've got a secret! →</button>
+        </div>
+
+        <!-- STAGE 4: The Kiss Cipher -->
+        <div id="stage-4" class="stage hidden">
+          <h1 class="font-romantic">The Foggy Window 🌫️</h1>
+          <p>Wipe the steam away to see our secret...</p>
+          <div class="cipher-container">
+            <div id="rain-background" class="rain-container"></div>
+            <div id="secret-message" class="secret-message">
+              Every raindrop reminds me of a kiss I want to give you. Every time it's raining outside I remember the day when we were fully soaked in rain and kissing each other non stop uncontrollably. I want re-live that moment again and again and every time more passionately with you bbg. Happy Kiss Day, my love! ❤️
+            </div>
+            <canvas id="fog-canvas"></canvas>
+          </div>
+          <button class="btn-valentine hidden" id="flip-to-back-btn">Look behind the glass... 💌</button>
+        </div>
+
+      </div>
+
+      <!-- BACK SIDE: The Photo Reveal -->
+      <div class="card kiss-card flip-card-back">
+        <h1 class="font-romantic">Our Rainy Kiss ✨</h1>
+        <div class="photo-reveal-container">
+          <div id="photo-rain-overlay" class="rain-container"></div>
+          <img src="/nomNomHazy.png" alt="Our Special Moment" class="final-photo">
+        </div>
+        <p class="love-you-msg">Forever and always yours. ❤️</p>
+        <button class="btn-valentine" onclick="location.href='../../index.html'">Save these for later 💋</button>
+      </div>
+
+    </div>
+  </div>
+
+</div>
+<script type="module" src="./day13.js"></script>
+</body>
+</html>

@@ -1,0 +1,239 @@
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&family=Caveat:wght@500&display=swap');
+
+.hug-theme {
+    background: linear-gradient(135deg, #fff1eb 0%, #ace0f9 100%);
+    transition: background 0.5s ease;
+}
+
+.hug-card {
+    max-width: 600px !important;
+    min-height: 550px;
+    padding: 2.5rem;
+}
+
+.font-romantic {
+    font-family: 'Dancing Script', cursive;
+    font-size: 2.5rem;
+    color: #d81b60;
+    margin-bottom: 1rem;
+}
+
+.stage {
+    animation: fadeIn 0.6s ease-out;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Stage 1: Generator */
+.generator-box {
+    margin: 2rem 0;
+    padding: 2rem;
+    background: white;
+    border-radius: 20px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+    width: 80%;
+}
+
+.hug-text {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: #ff477e;
+    min-height: 3rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+/* Stage 2: Anatomy */
+.anatomy-container {
+    position: relative;
+    width: 100%;
+    max-width: 400px;
+    margin: 1.5rem 0;
+}
+
+.hug-illustration {
+    position: relative;
+    width: 100%;
+}
+
+.hug-img {
+    width: 100%;
+    border-radius: 15px;
+    filter: drop-shadow(0 10px 15px rgba(0,0,0,0.1));
+}
+
+.hotspot {
+    position: absolute;
+    cursor: pointer;
+    background: white;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 0 10px rgba(255, 71, 126, 0.5);
+    animation: pulse 2s infinite;
+    z-index: 2;
+}
+
+.anatomy-msg {
+    margin-top: 1.5rem;
+    font-family: 'Caveat', cursive;
+    font-size: 1.5rem;
+    color: #5d4037;
+    min-height: 3rem;
+}
+
+/* Stage 4: Greenhouse */
+.garden-box {
+    width: 100%;
+    height: 250px;
+    background: rgba(255, 255, 255, 0.5);
+    border-radius: 20px;
+    position: relative;
+    overflow: hidden;
+    margin: 1.5rem 0;
+    border: 2px dashed #ffafcc;
+}
+
+.flower {
+    position: absolute;
+    font-size: 2rem;
+    animation: growIn 0.5s ease-out forwards;
+}
+
+.progress-container {
+    width: 80%;
+    height: 12px;
+    background: #eee;
+    border-radius: 10px;
+    margin-bottom: 1rem;
+    overflow: hidden;
+}
+
+.progress-bar {
+    height: 100%;
+    width: 0%;
+    background: linear-gradient(to right, #ffafcc, #ff477e);
+    transition: width 0.1s linear;
+}
+
+/* Stage 5: Timer */
+.timer-display {
+    font-size: 3.5rem;
+    font-weight: 800;
+    color: #ff477e;
+    margin: 1rem 0;
+    font-family: monospace;
+}
+
+.huge-hug-btn {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    border: none;
+    background: #ff477e;
+    color: white;
+    font-size: 1.5rem;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 0 30px rgba(255, 71, 126, 0.3);
+    transition: transform 0.1s;
+    user-select: none;
+    -webkit-user-select: none;
+}
+
+.huge-hug-btn:active {
+    transform: scale(0.9);
+}
+
+.hug-feedback {
+    margin-top: 1.5rem;
+    font-size: 1.2rem;
+    font-style: italic;
+    color: #5d4037;
+    min-height: 4rem; /* Changed to min-height to allow multiple lines */
+    padding: 0 1rem;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#final-back-btn {
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+    position: relative;
+    z-index: 10;
+}
+
+.hug-description-text {
+    margin-top: 15px;
+    font-size: 0.95rem;
+    color: #666;
+    font-style: italic;
+    max-width: 250px;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 1.4;
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(255, 71, 126, 0.7); }
+    70% { transform: scale(1.1); box-shadow: 0 0 0 10px rgba(255, 71, 126, 0); }
+    100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(255, 71, 126, 0); }
+}
+
+@keyframes growIn {
+    from { transform: scale(0) rotate(-45deg); opacity: 0; }
+    to { transform: scale(1) rotate(0deg); opacity: 1; }
+}
+
+.hidden { display: none !important; }
+
+.bg-emojis {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: -1;
+    overflow: hidden;
+}
+
+.floating-emoji {
+    position: absolute;
+    bottom: -50px;
+    font-size: 1.5rem;
+    opacity: 0.4;
+    animation: floatUp linear infinite;
+}
+
+@keyframes floatUp {
+    0% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 0;
+    }
+    10% {
+        opacity: 0.4;
+    }
+    90% {
+        opacity: 0.4;
+    }
+    100% {
+        transform: translateY(-110vh) rotate(360deg);
+        opacity: 0;
+    }
+}
