@@ -12,16 +12,42 @@
 <div class="main-container">
   <div class="card hug-card">
 
-    <!-- STAGE 1: Random Hug Generator (The Icebreaker) -->
+    <!-- STAGE 1: The Icebreaker -->
     <div id="stage-1" class="stage">
       <h1 class="font-romantic">The Hug-o-Matic 🎰</h1>
-      <p>Spin the wheel to see which hug you're getting later!</p>
-      <div class="generator-box">
-        <div id="hug-display" class="hug-text">???</div>
-        <button class="btn-valentine" id="spin-btn">Spin for a Hug! 💫</button>
-        <p id="hug-description" class="hug-description-text"></p>
+
+      <!-- NEW: Subscription Agreement Box (Visible First) -->
+      <div id="hug-agreement" class="agreement-box">
+        <h3>⚠️ Hug Subscription Agreement</h3>
+        <div class="agreement-text">
+          <p>1. User agrees to at least 69 mins of "cheep-ing" per hour.</p>
+          <p>2. User must not complain about neck kisses during back hugs.</p>
+          <p>3. Subscription is lifetime and cannot be canceled even if user is acting like a "Kaam krne de mereko".</p>
+          <p>4. Batman reserves the right to lift and twirl the user at any moment.</p>
+          <p>5. Any attempt to "bhago" from a hug will result in double the cheep-ing time.</p>
+          <p>6. User acknowledges that "Mai apsara hu" is not a valid excuse to skip daily cuddle quotas.</p>
+          <p>7. If user is found being extra "pyari", Batman can apply 100% extra pressure in hugs.</p>
+          <p>8. All colour marks on hulu lulu and other soft parts in body are to be considered as official stamps of love.</p>
+        </div>
+        <label class="checkbox-container">
+          <input type="checkbox" id="agree-checkbox">
+          <span class="checkmark"></span>
+          I agree to be cheepa-ed forever ❤️
+        </label>
       </div>
-      <button class="btn-valentine hidden" id="to-stage-2" style="margin-top: 20px;">That sounds perfect! Next? →</button>
+
+      <!-- Hidden until agreement is checked -->
+      <div id="main-icebreaker" class="hidden">
+        <p id="generator-instruction">Spin the wheel to see which hug you're getting later!</p>
+        <div class="generator-box" id="main-generator">
+          <div id="hug-display" class="hug-text">???</div>
+          <!-- Button is now in the middle -->
+          <button class="btn-valentine" id="spin-btn">Spin for a Hug! 💫</button>
+          <!-- Description is now at the bottom -->
+          <p id="hug-description" class="hug-description-text"></p>
+        </div>
+        <button class="btn-valentine hidden" id="to-stage-2" style="margin-top: 20px;">That sounds perfect! Next? →</button>
+      </div>
     </div>
 
     <!-- STAGE 2: Anatomy of a Perfect Hug -->
@@ -32,6 +58,8 @@
           <span class="hotspot" data-msg="The perfect place to hide from the world." style="top: 20%; left: 40%;">📍</span>
           <span class="hotspot" data-msg="Better than any weighted blanket." style="top: 50%; left: 30%;">📍</span>
           <span class="hotspot" data-msg="Where I can hear your heart beat for me." style="top: 45%; left: 60%;">📍</span>
+          <!-- NEW: The Prank Hotspot -->
+          <span class="hotspot prank-spot" data-msg="Emergency Spank Zone: Only used if badmashi level exceeds 100% 🍑😜" style="top: 85%; left: 50%;">📍</span>
           <img src="../../public/teddy1.png" alt="Hug Illustration" class="hug-img">
         </div>
         <div id="anatomy-msg" class="anatomy-msg">Click the pins!</div>
@@ -39,23 +67,20 @@
       <button class="btn-valentine hidden" id="to-stage-3">I want a real one now! →</button>
     </div>
 
-    <!-- STAGE 3: Empty stage removal/rename -->
-    <div id="stage-3" class="stage hidden">
-      <!-- Stage 3 is currently skipped in JS logic -->
-    </div>
-
     <!-- STAGE 4: The Hug Greenhouse (Growing Love) -->
     <div id="stage-4" class="stage hidden">
-      <h1 class="font-romantic">Grow our Hug Garden 🌸</h1>
-      <p>Hold the button to make the flowers bloom!</p>
-      <div id="garden-view" class="garden-box">
-        <!-- Flowers appear here -->
-      </div>
-      <button class="btn-valentine" id="grow-btn">Hold to Plant Hugs 🌱</button>
-      <div class="progress-container">
-        <div id="grow-progress" class="progress-bar"></div>
-      </div>
+    <h1 class="font-romantic">Grow our Hug Garden 🌸</h1>
+    <p>Hold the button to make the flowers bloom!</p>
+    <div id="garden-view" class="garden-box"></div>
+    <button class="btn-valentine" id="grow-btn">Hold to Plant Hugs 🌱</button>
+    <div class="progress-container">
+      <div id="grow-progress" class="progress-bar"></div>
     </div>
+    <!-- NEW: The blooming heart message -->
+    <p id="garden-msg" class="garden-message hidden">
+      "Just like these flowers blooming, my heart blooms with every second of your hug. I want my hands to be always wrapped around you or your hulu lulu's or you dear bums (fluffy fluffy) or moving towards you to wrap you for lifetime 🫂"
+    </p>
+  </div>
 
     <!-- STAGE 5: The Ultimate Hug Timer (Long-Distance Style) -->
     <div id="stage-5" class="stage hidden">

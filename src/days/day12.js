@@ -1,10 +1,24 @@
 document.addEventListener('DOMContentLoaded', () => {
-  // Stage Transitions
+  // --- Stage Transitions ---
   const stages = document.querySelectorAll('.stage');
   const goToStage = (num) => {
     stages.forEach((s) => s.classList.add('hidden'));
     document.getElementById(`stage-${num}`).classList.remove('hidden');
   };
+
+  // --- NEW: Agreement Logic ---
+  const agreeCheckbox = document.getElementById('agree-checkbox');
+  const agreementBox = document.getElementById('hug-agreement');
+  const mainIcebreaker = document.getElementById('main-icebreaker');
+
+  agreeCheckbox.addEventListener('change', () => {
+    if (agreeCheckbox.checked) {
+      setTimeout(() => {
+        agreementBox.classList.add('hidden');
+        mainIcebreaker.classList.remove('hidden');
+      }, 500);
+    }
+  });
 
   // --- STAGE 1: Random Hug Generator ---
   const hugTypes = [
@@ -22,7 +36,8 @@ document.addEventListener('DOMContentLoaded', () => {
   const toStage2 = document.getElementById('to-stage-2');
 
   const hugDescriptions = {
-    'The Bear Hug 🐻': 'A tight, squeeze-all-your-worries-away kind of hug. Ekdum cheep dunga, tb tk cheepunga jb tk hulu lulu k marks mere chest m na ho jaye',
+    'The Bear Hug 🐻':
+      'A tight, squeeze-all-your-worries-away kind of hug. Ekdum cheep dunga, tb tk cheepunga jb tk hulu lulu k marks mere chest m na ho jaye',
     'The Lift-and-Twirl 🌪️':
       'For when the excitement to see you is just too much! ghumi ghumi krwa dunga, fir chakkar kha k bed m girna and mere kissi se uth jana snow white jaisa',
     "The 'Never Let Go' Hug ♾️":
@@ -39,7 +54,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
   spinBtn.addEventListener('click', () => {
     spinBtn.disabled = true;
+    // Reset description while spinning
     hugDescription.innerText = '';
+    hugDescription.style.opacity = '0';
+
     let count = 0;
     const interval = setInterval(() => {
       hugDisplay.innerText =
@@ -49,6 +67,10 @@ document.addEventListener('DOMContentLoaded', () => {
         clearInterval(interval);
         const selectedHug = hugDisplay.innerText;
         hugDescription.innerText = hugDescriptions[selectedHug] || '';
+        // Fade in description
+        hugDescription.style.opacity = '1';
+        hugDescription.style.transition = 'opacity 0.5s ease';
+
         spinBtn.innerText = 'Spin Again? 💫';
         spinBtn.disabled = false;
         toStage2.classList.remove('hidden');
@@ -56,7 +78,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }, 100);
   });
 
-  document.getElementById('to-stage-2').onclick = () => goToStage(2);
+  toStage2.onclick = () => goToStage(2);
 
   // --- STAGE 2: Anatomy of a Hug ---
   const hotspots = document.querySelectorAll('.hotspot');
@@ -66,27 +88,37 @@ document.addEventListener('DOMContentLoaded', () => {
   hotspots.forEach((spot, idx) => {
     spot.addEventListener('click', () => {
       anatomyMsg.innerText = spot.getAttribute('data-msg');
+      if (spot.classList.contains('prank-spot')) {
+        anatomyMsg.style.color = '#d81b60';
+        anatomyMsg.style.fontWeight = 'bold';
+      } else {
+        anatomyMsg.style.color = '#5d4037';
+        anatomyMsg.style.fontWeight = 'normal';
+      }
       spot.style.animation = 'none';
       spot.style.background = '#ffafcc';
       clickedHotspots.add(idx);
-
       if (clickedHotspots.size === hotspots.length) {
         document.getElementById('to-stage-3').classList.remove('hidden');
       }
     });
   });
 
-  document.getElementById('to-stage-3').onclick = () => goToStage(4); // Skipping 3 for now as we merged it
+  document.getElementById('to-stage-3').onclick = () => goToStage(4);
 
   // --- STAGE 4: Hug Greenhouse ---
   const growBtn = document.getElementById('grow-btn');
   const garden = document.getElementById('garden-view');
   const progressBar = document.getElementById('grow-progress');
+  const gardenMsg = document.getElementById('garden-msg'); // New reference
   let growInterval;
   let progress = 0;
   const flowers = ['🌸', '🌹', '🌷', '🌻', '🌺', '🌼'];
 
   const startGrowing = () => {
+    if (gardenMsg) {
+      gardenMsg.classList.remove('hidden');
+    }
     growInterval = setInterval(() => {
       progress += 1;
       progressBar.style.width = `${progress}%`;
@@ -133,7 +165,10 @@ document.addEventListener('DOMContentLoaded', () => {
     { time: 10, msg: "Don't ever let go... ❤️" },
     { time: 20, msg: 'I can feel your heartbeat... 💓' },
     { time: 30, msg: 'Pure bliss. Stay here forever. ✨' },
-    { time: 40, msg: 'No doubt the best that I have ever felt in my entire life is when I was wrapped around your arms so tight that I could feel your heart beating fast for me and you kissing on my neck. Love you cutuuuu ❤️' },
+    {
+      time: 40,
+      msg: 'No doubt the best that I have ever felt in my entire life is when I was wrapped around your arms so tight that I could feel your heart beating fast for me and you kissing on my neck. Love you cutuuuu ❤️',
+    },
   ];
 
   const startHug = () => {
@@ -169,18 +204,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // --- Background Floating Emojis ---
   const bgContainer = document.getElementById('bg-emojis');
-  const emojis = [
-    '🤗',
-    '🫂',
-    '❤️',
-    '✨',
-    '🧸',
-    '🥰',
-    '💖',
-    '☁️',
-    '🌸',
-    '🐻',
-  ];
+  const emojis = ['🤗', '🫂', '❤️', '✨', '🧸', '🥰', '💖', '☁️', '🌸', '🐻'];
 
   function createEmoji() {
     const emoji = document.createElement('div');
@@ -209,5 +233,5 @@ document.addEventListener('DOMContentLoaded', () => {
   // Spawn a new emoji every 1.5 seconds
   setInterval(createEmoji, 1500);
   // Initial batch
-  for(let i=0; i<5; i++) setTimeout(createEmoji, i * 500);
+  for (let i = 0; i < 5; i++) setTimeout(createEmoji, i * 500);
 });
