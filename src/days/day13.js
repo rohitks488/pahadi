@@ -224,16 +224,28 @@ document.addEventListener('DOMContentLoaded', () => {
     const emoji = document.createElement('div');
     emoji.className = 'floating-emoji';
     emoji.innerText = kissEmojis[Math.floor(Math.random() * kissEmojis.length)];
+
+    // Random horizontal position
     emoji.style.left = Math.random() * 100 + 'vw';
+
+    // Random size
     const size = Math.random() * (2.5 - 1) + 1;
     emoji.style.fontSize = `${size}rem`;
+
+    // Random duration
     const duration = Math.random() * (15 - 8) + 8;
     emoji.style.animationDuration = `${duration}s`;
-    emoji.style.opacity = Math.random() * (0.6 - 0.2) + 0.2;
+
+    // Random opacity
+    emoji.style.opacity = Math.random() * (0.5 - 0.2) + 0.2;
+
     bgContainer.appendChild(emoji);
+
+    // Remove emoji after animation ends
     setTimeout(() => emoji.remove(), duration * 1000);
   }
 
+  // Initial spawn and interval
   setInterval(spawnKissEmoji, 2000);
   for (let i = 0; i < 6; i++) setTimeout(spawnKissEmoji, i * 400);
 });

@@ -254,4 +254,31 @@ document.addEventListener('DOMContentLoaded', () => {
   };
   // Start at Stage 1
   goToStage(1);
+
+  // --- Background Floating Emojis (The Grand Finale Mix) ---
+  const bgHearts = document.getElementById('bg-hearts');
+  const finaleEmojis = ['❤️', '💖', '🌹', '🧸', '💍', '🍫', '💋', '✨', '🥂', '🤗'];
+
+  function spawnFinaleEmoji() {
+    if (!bgHearts) return;
+    const emoji = document.createElement('div');
+    emoji.className = 'floating-emoji';
+    emoji.innerText = finaleEmojis[Math.floor(Math.random() * finaleEmojis.length)];
+
+    emoji.style.left = Math.random() * 100 + 'vw';
+
+    const size = Math.random() * (2.2 - 1) + 1;
+    emoji.style.fontSize = `${size}rem`;
+
+    const duration = Math.random() * (15 - 8) + 8;
+    emoji.style.animationDuration = `${duration}s`;
+
+    emoji.style.opacity = Math.random() * (0.4 - 0.15) + 0.15;
+
+    bgHearts.appendChild(emoji);
+    setTimeout(() => emoji.remove(), duration * 1000);
+  }
+
+  setInterval(spawnFinaleEmoji, 1800);
+  for (let i = 0; i < 8; i++) setTimeout(spawnFinaleEmoji, i * 300);
 });

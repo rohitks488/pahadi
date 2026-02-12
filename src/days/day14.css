@@ -347,3 +347,30 @@
 .memory-card.flipped img {
     display: block;
 }
+
+/* Floating Emoji Animation Styles */
+.floating-emoji {
+    position: fixed;
+    bottom: -50px;
+    pointer-events: none;
+    z-index: -1;
+    animation: floatUp linear forwards;
+}
+
+@keyframes floatUp {
+    0% { transform: translateY(0) rotate(0deg); opacity: 0; }
+    10% { opacity: var(--target-opacity, 0.4); }
+    90% { opacity: var(--target-opacity, 0.4); }
+    100% { transform: translateY(-110vh) rotate(360deg); opacity: 0; }
+}
+
+/* Make sure the container is visible */
+.bg-hearts {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    pointer-events: none;
+    z-index: -1;
+}
