@@ -36,21 +36,37 @@ document.addEventListener('DOMContentLoaded', () => {
 
   document.getElementById('to-stage-2').onclick = () => goToStage(2);
 
-  // --- STAGE 2: Geography ---
-  const points = document.querySelectorAll('.kiss-point');
-  const mapMsg = document.getElementById('map-msg');
-  let clickedPoints = new Set();
+  // --- STAGE 2: Pucker-Up Prank ---
+  const startScanBtn = document.getElementById('start-calibration');
+  const loadingOverlay = document.getElementById('loading-overlay');
+  const prankResult = document.getElementById('prank-result');
+  const nextBtn2 = document.getElementById('to-stage-3');
+  const scanLine = document.querySelector('.scan-line-horizontal');
 
-  points.forEach((p, idx) => {
-    p.onclick = () => {
-      mapMsg.innerText = p.dataset.msg;
-      p.style.background = '#ff4d4d';
-      clickedPoints.add(idx);
-      if (clickedPoints.size === points.length) {
-        document.getElementById('to-stage-3').classList.remove('hidden');
-      }
-    };
-  });
+  startScanBtn.onclick = () => {
+    startScanBtn.innerText = 'Scanning... HOLD STILL!';
+    startScanBtn.disabled = true;
+
+    // Step 1: Fake scanning for 2.5 seconds
+    setTimeout(() => {
+      // Step 2: "Freeze" the system
+      loadingOverlay.classList.remove('hidden');
+      scanLine.style.animationPlayState = 'paused';
+
+      // Step 3: Let her hold the face for 4 seconds of confusion
+      setTimeout(() => {
+        loadingOverlay.innerHTML =
+          "<div style='font-size:3rem'>📸</div><br>CLICK! <br><br> Captured!";
+
+        setTimeout(() => {
+          loadingOverlay.classList.add('hidden');
+          prankResult.classList.remove('hidden');
+          startScanBtn.classList.add('hidden');
+          nextBtn2.classList.remove('hidden');
+        }, 1500);
+      }, 4000);
+    }, 2500);
+  };
 
   document.getElementById('to-stage-3').onclick = () => {
     goToStage(3);
@@ -185,7 +201,6 @@ document.addEventListener('DOMContentLoaded', () => {
     };
   }
 
-  // Unified Rain Function
   function startRain(containerId) {
     const container = document.getElementById(containerId);
     if (!container) return;
@@ -200,7 +215,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
-  // --- Background Floating Kiss Emojis ---
+  // Background Floating Kiss Emojis
   const bgContainer = document.getElementById('bg-emojis');
   const kissEmojis = ['💋', '😘', '🥰', '💖', '💄', '🌹', '✨', '💘'];
 

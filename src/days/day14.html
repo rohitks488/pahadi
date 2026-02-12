@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Feb 14 - The Grand Finale ❤️</title>
+  <link rel="stylesheet" href="../../style.css">
+  <link rel="stylesheet" href="./day14.css">
+</head>
+<body class="valentine-theme">
+<div id="bg-hearts" class="bg-hearts"></div>
+<div class="main-container">
+  <div class="card v-card" id="main-card">
+    <!-- NEW: Digital glitch background layer -->
+    <div id="digital-bg" class="digital-bg hidden"></div>
+    <!-- NEW: Floating tech-hearts -->
+    <div class="tech-dots"><span></span><span></span><span></span><span></span></div>
+
+    <!-- STAGE 1: Love Algorithm -->
+    <div id="stage-1" class="stage">
+      <h1 class="font-romantic">System Initialization... 🖥️</h1>
+      <div class="scanner-box">
+        <div class="scan-line"></div>
+        <p id="scan-status">Scanning for Cutu Energy...</p>
+        <div class="progress-container"><div id="scan-bar" class="progress-bar"></div></div>
+      </div>
+      <div id="scan-result" class="hidden">
+        <p class="result-text">100% Cuteness DETECTED ❤️</p>
+
+        <div id="error-alert" class="hidden error-zone">
+          <p class="error-msg">⚠️ CRITICAL SYSTEM FAILURE ⚠️</p>
+          <p class="error-msg">Reason: CUTENESS OVERLOADED 🚨</p>
+          <p class="error-msg">Machine status: Broken beyond repair... 🤡</p>
+        </div>
+
+        <button class="btn-valentine hidden" id="to-stage-2">Enter the Interview →</button>
+      </div>
+    </div>
+    <!-- STAGE 2: Job Interview -->
+    <div id="stage-2" class="stage hidden">
+      <h1 class="font-romantic">The Official Application 📝</h1>
+      <p>Position: <b>Lifetime CEO of My Heart</b></p>
+      <div class="interview-form">
+        <label><input type="checkbox" class="skill-cb"> Pro-Level Cheep-ing 🐥</label>
+        <label><input type="checkbox" class="skill-cb"> Expert problem solver-"Dekhte h" 📖</label>
+        <label><input type="checkbox" class="skill-cb"> Professional odin spammer 🔫</label>
+        <label><input type="checkbox" class="skill-cb"> Multiple courses done on how to be effortlessly cute 24x7 🐥</label>
+        <label><input type="checkbox" class="skill-cb"> 6 months+ exp in hugging batman from behind on bike and making his world go lil slow🦇</label>
+        <label><input type="checkbox" class="skill-cb"> Insane hair flips whih make people go Ufff uffffff🎀</label>
+        <label><input type="checkbox" class="skill-cb"> cutu si shakal with 200% tharkiness from inside who wants to hug for 69 seconds💋</label>
+      </div>
+      <button class="btn-valentine" id="submit-app">Submit Application 🤙</button>
+      <p id="app-feedback" class="hidden"></p>
+    </div>
+
+    <!-- STAGE 3: Love Lock Quest -->
+    <div id="stage-3" class="stage hidden">
+      <h1 class="font-romantic">Unlock the Vault 🔐</h1>
+      <p>Match our favorite things to proceed!</p>
+      <div id="memory-grid" class="memory-grid">
+        <!-- Memory cards injected by JS -->
+      </div>
+      <!-- NEW: Victory message for the puzzle -->
+      <p id="memory-victory-msg" class="hidden final-love-note"></p>
+      <button class="btn-valentine hidden" id="to-stage-4">Access Secret Memories →</button>
+    </div>
+
+    <!-- STAGE 4: The Big Question -->
+    <div id="stage-4" class="stage hidden">
+      <h1 class="font-romantic">The 14-Day Journey ✨</h1>
+      <div class="timeline-container" id="timeline">
+        <!-- JS will inject highlights of the past 14 days -->
+      </div>
+      <div class="final-question-box">
+        <h2 class="font-romantic question-text">Will you be my Valentine? ❤️</h2>
+        <div class="proposal-btns">
+          <button class="btn-valentine pulse" id="yes-btn">YES! 😍</button>
+          <button class="btn-valentine" id="no-btn">No 🏃‍♀️</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- STAGE 5: Final Dashboard -->
+    <div id="stage-5" class="stage hidden">
+      <h1 class="font-romantic">Welcome Home, CEO ❤️</h1>
+      <div class="dashboard-grid">
+        <div class="v-widget id-card">
+          <img src="/nomNom3.jpeg" class="ceo-photo" alt="CEO Photo">
+          <div class="id-details">
+            <p><b>Name:</b> My One & Only Pahadi</p>
+            <p><b>Title:</b> CEO of My Heart</p>
+            <p><b>Status:</b> Forever Occupied</p>
+          </div>
+        </div>
+        <div class="v-widget coupons">
+          <h3>Active Privileges 🎫</h3>
+          <ul class="coupon-list">
+            <li>✨ 1x 69-min cheep k Hug</li>
+            <li>🏰 1x Udaipur Mahal Stay</li>
+            <li>😈 Unlimited Badmashi Pass</li>
+            <li>❄️ 1x baraf wale pahad m ghumi ghumi</li>
+            <li>🍫 Infinite Chocolate Supply</li>
+            <li>💋  Infinite kisses and forever gyan paas</li>
+          </ul>
+        </div>
+      </div>
+      <p class="final-love-note">I love you more than words can ever say. Happy Valentine's Day! ❤️</p>
+      <button class="btn-valentine" onclick="location.href='../../index.html'">Restart our Story ♾️</button>
+    </div>
+
+  </div>
+</div>
+<script type="module" src="./day14.js"></script>
+</body>
+</html>

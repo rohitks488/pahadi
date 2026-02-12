@@ -2,7 +2,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const buttons = document.querySelectorAll('.btn-valentine');
 
   // Get current date in YYYY-MM-DD format (local time)
-  const today = new Date();
+  const today = new Date(;
   const todayStr =
     today.getFullYear() +
     '-' +

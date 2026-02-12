@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -38,21 +37,32 @@
           </div>
         </div>
 
-        <!-- STAGE 2: The Kiss Geography -->
+        <!-- STAGE 2: The Pucker-Up Prank -->
         <div id="stage-2" class="stage hidden">
-          <h1 class="font-romantic">The Kiss Geography 🗺️</h1>
-          <p>Every kiss has a different promise...</p>
-          <div class="map-container">
-            <div class="silhouette-box">
-              <span class="kiss-point" data-msg="Forehead: A promise to always protect you." style="top: 15%; left: 50%;">📍</span>
-              <span class="kiss-point" data-msg="Cheek: Because I just love being near you." style="top: 35%; left: 30%;">📍</span>
-              <span class="kiss-point" data-msg="Hand: To show you the respect you deserve." style="top: 70%; left: 60%;">📍</span>
-              <span class="kiss-point" data-msg="Lips: Because you're my one and only." style="top: 40%; left: 50%;">📍</span>
-              <img src="../../public/teddy1.png" alt="Map" class="map-img">
+          <h1 class="font-romantic">Kiss Calibration 📸</h1>
+          <p>Position your face and hold your best pucker to unlock the next gift!</p>
+
+          <div class="mirror-container">
+            <div class="camera-frame">
+              <div id="mirror-overlay" class="mirror-overlay">
+                <div class="scan-line-horizontal"></div>
+                <div class="focus-brackets"></div>
+              </div>
+              <div class="placeholder-face">🤳</div>
+              <div id="loading-overlay" class="loading-overlay hidden">
+                <div class="spinner"></div>
+                <p>SYSTEM HUNG... PLEASE HOLD FACE... ⏳</p>
+              </div>
             </div>
-            <div id="map-msg" class="map-msg">Tap the points!</div>
+
+            <div id="prank-result" class="prank-result hidden">
+              <p class="goldfish-text">Photo saved to 'Blackmail Folder'! 📁</p>
+              <p>You look like a beautiful goldfish! 🐠😂</p>
+            </div>
+
+            <button class="btn-valentine" id="start-calibration">Start Scan 👄</button>
           </div>
-          <button class="btn-valentine hidden" id="to-stage-3">Collect some kisses →</button>
+          <button class="btn-valentine hidden" id="to-stage-3">I'll get you back for this! →</button>
         </div>
 
         <!-- STAGE 3: Virtual Smooch Collector -->
